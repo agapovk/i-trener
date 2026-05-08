@@ -2,21 +2,23 @@ import fs from "node:fs"
 import path from "node:path"
 import type { Material, MaterialFrontmatter } from "@entities/material"
 import matter from "gray-matter"
+import { optionalString, requireString, validateCategory, validateVideoPlatform } from "./validate"
 
 const CONTENT_DIR = path.join(process.cwd(), "content/materials")
 
-function parseFrontmatter(raw: unknown): MaterialFrontmatter {
+function parseFrontmatter(raw: unknown, filename: string): MaterialFrontmatter {
   const data = raw as Record<string, unknown>
+  const ctx = `material:${filename}`
   return {
-    title: String(data.title ?? ""),
-    slug: String(data.slug ?? ""),
-    category: data.category as MaterialFrontmatter["category"],
-    author: String(data.author ?? ""),
-    date: String(data.date ?? ""),
-    excerpt: String(data.excerpt ?? ""),
-    image: data.image != null ? String(data.image) : undefined,
-    videoUrl: data.videoUrl != null ? String(data.videoUrl) : undefined,
-    videoPlatform: data.videoPlatform as MaterialFrontmatter["videoPlatform"],
+    title: requireString(data, "title", ctx),
+    slug: requireString(data, "slug", ctx),
+    category: validateCategory(data, "category", ctx),
+    author: requireString(data, "author", ctx),
+    date: requireString(data, "date", ctx),
+    excerpt: requireString(data, "excerpt", ctx),
+    image: optionalString(data, "image"),
+    videoUrl: optionalString(data, "videoUrl"),
+    videoPlatform: validateVideoPlatform(data, "videoPlatform", ctx),
     featured: data.featured != null ? Boolean(data.featured) : undefined,
   }
 }
@@ -29,7 +31,7 @@ export function getAllMaterials(): Material[] {
     .map((filename) => {
       const raw = fs.readFileSync(path.join(CONTENT_DIR, filename), "utf8")
       const { data } = matter(raw)
-      return { frontmatter: parseFrontmatter(data) }
+      return { frontmatter: parseFrontmatter(data, filename) }
     })
     .sort((a, b) => (a.frontmatter.date < b.frontmatter.date ? 1 : -1))
 }
@@ -39,5 +41,5 @@ export function getMaterialBySlug(slug: string): (Material & { content: string }
   if (!fs.existsSync(filepath)) return null
   const raw = fs.readFileSync(filepath, "utf8")
   const { data, content } = matter(raw)
-  return { frontmatter: parseFrontmatter(data), content }
+  return { frontmatter: parseFrontmatter(data, `${slug}.mdx`), content }
 }
