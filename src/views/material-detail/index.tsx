@@ -22,15 +22,15 @@ export async function MaterialDetailView({ slug }: MaterialDetailViewProps) {
   })
 
   return (
-    <main className="px-4 py-12 max-w-3xl mx-auto w-full flex flex-col gap-8">
-      <Link href="/materials" className="text-sm text-accent hover:underline">
-        ← Все материалы
+    <main className="px-4 py-10 max-w-3xl mx-auto w-full flex flex-col gap-10">
+      <Link href="/materials" className="text-sm text-muted hover:text-accent transition-colors">
+        ← Материалы
       </Link>
 
-      <article className="flex flex-col gap-6">
-        <header className="flex flex-col gap-3">
-          <div className="flex items-center gap-3">
-            <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-accent-dim text-accent">
+      <article className="flex flex-col gap-8">
+        <header className="flex flex-col gap-4 pb-8 border-b border-border-subtle">
+          <div className="flex items-center gap-3 flex-wrap">
+            <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-accent-dim text-accent">
               {CATEGORY_LABELS[fm.category]}
             </span>
             <time dateTime={fm.date} className="text-xs font-mono text-muted">
@@ -38,7 +38,7 @@ export async function MaterialDetailView({ slug }: MaterialDetailViewProps) {
             </time>
           </div>
           <h1 className="text-4xl font-extrabold text-primary leading-tight">{fm.title}</h1>
-          <p className="text-base text-muted">Автор: {fm.author}</p>
+          <p className="text-sm text-muted">Автор: {fm.author}</p>
         </header>
 
         {fm.videoUrl && <VideoEmbed url={fm.videoUrl} title={fm.title} />}

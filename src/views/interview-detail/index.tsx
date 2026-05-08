@@ -21,19 +21,19 @@ export async function InterviewDetailView({ slug }: InterviewDetailViewProps) {
   })
 
   return (
-    <main className="px-4 py-12 max-w-3xl mx-auto w-full flex flex-col gap-8">
-      <Link href="/interviews" className="text-sm text-accent hover:underline">
-        ← Все интервью
+    <main className="px-4 py-10 max-w-3xl mx-auto w-full flex flex-col gap-10">
+      <Link href="/interviews" className="text-sm text-muted hover:text-accent transition-colors">
+        ← Интервью
       </Link>
 
-      <article className="flex flex-col gap-6">
-        <header className="flex flex-col gap-3">
+      <article className="flex flex-col gap-8">
+        <header className="flex flex-col gap-4 pb-8 border-b border-border-subtle">
           <time dateTime={fm.date} className="text-xs font-mono text-muted">
             {formattedDate}
           </time>
           <h1 className="text-4xl font-extrabold text-primary leading-tight">{fm.title}</h1>
-          <div>
-            <p className="text-base font-semibold text-primary">{fm.guest}</p>
+          <div className="flex flex-col gap-0.5">
+            <p className="font-semibold text-primary">{fm.guest}</p>
             {fm.guestRole && <p className="text-sm text-muted">{fm.guestRole}</p>}
           </div>
         </header>

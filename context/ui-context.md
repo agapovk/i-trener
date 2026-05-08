@@ -105,7 +105,7 @@ const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-mono' })
 | H1 | `text-5xl` (48px) | 800 | Hero, заголовок страницы |
 | H2 | `text-3xl` (30px) | 800 | Разделы страницы |
 | H3 | `text-xl` (20px) | 700 | Заголовки карточек, подразделы |
-| body | `text-base` (16px) | 400 | Основной текст |
+| body | `text-md` (16px) | 400 | Основной текст |
 | small | `text-sm` (14px) | 400 | Метаданные, подписи |
 
 ---

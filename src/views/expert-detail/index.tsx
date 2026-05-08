@@ -18,14 +18,14 @@ export async function ExpertDetailView({ slug }: ExpertDetailViewProps) {
   const { frontmatter: fm, content } = expert
 
   return (
-    <main className="px-4 py-12 max-w-3xl mx-auto w-full flex flex-col gap-8">
-      <Link href="/experts" className="text-sm text-accent hover:underline">
-        ← Все эксперты
+    <main className="px-4 py-10 max-w-3xl mx-auto w-full flex flex-col gap-10">
+      <Link href="/experts" className="text-sm text-muted hover:text-accent transition-colors">
+        ← Эксперты
       </Link>
 
       <article className="flex flex-col gap-8">
-        <header className="flex items-start gap-6">
-          <div className="relative h-24 w-24 rounded-full bg-subtle overflow-hidden shrink-0">
+        <header className="flex items-start gap-6 pb-8 border-b border-border-subtle">
+          <div className="relative h-24 w-24 rounded-full bg-elevated overflow-hidden shrink-0 border border-border">
             {fm.image ? (
               <Image src={fm.image} alt={fm.name} fill sizes="96px" className="object-cover" />
             ) : (
