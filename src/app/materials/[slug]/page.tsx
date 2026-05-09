@@ -14,9 +14,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const material = getMaterialBySlug(slug)
   if (!material) return {}
+  const { title, excerpt, image } = material.frontmatter
   return {
-    title: material.frontmatter.title,
-    description: material.frontmatter.excerpt,
+    title,
+    description: excerpt,
+    openGraph: {
+      title,
+      description: excerpt,
+      type: "article",
+      ...(image ? { images: [{ url: image }] } : {}),
+    },
   }
 }
 

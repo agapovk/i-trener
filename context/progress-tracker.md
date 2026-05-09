@@ -6,13 +6,13 @@
 
 ## Текущая фаза
 
-- **Phase 3 — Secondary Pages** — не начата
+- **Phase 6 — Launch** — не начата
 
 ---
 
 ## Текущая цель
 
-Реализовать вторичные страницы: категории, партнёры, контакты.
+Подключить домен i-trener.ru на Vercel, прогнать csv-to-mdx по реальным данным Webflow, проверить Pagespeed.
 
 ---
 
@@ -36,7 +36,7 @@
 
 ## В прогрессе
 
-Ничего. Phase 2 завершена, Phase 3 не начата.
+Ничего. Phase 4+5 завершена, Phase 6 (Launch) не начата.
 
 ---
 
@@ -57,20 +57,25 @@
 - [x] `generateStaticParams` + `generateMetadata` для всех динамических маршрутов
 - [x] 16 статических страниц, `pnpm check` + `pnpm typecheck` + `pnpm build` зелёные
 
-### Phase 3 — Secondary Pages
-- [ ] Страница категории
-- [ ] Партнёры
-- [ ] Контакты
+### ~~Phase 3 — Secondary Pages~~ ✅ (2026-05-09)
+- [x] Страница категории (`/categories/[category]`) — фильтрация материалов по категории, `notFound()` для несуществующих slug
+- [x] Партнёры (`/partners/`) — статическая страница, данные в `shared/config`
+- [x] Контакты (`/contacts/`) — соцсети и форма сотрудничества с `SOCIAL_LINKS`
+- [x] `PARTNERS` добавлены в `shared/config/index.ts`
+- [x] Footer добавлен в `app/layout.tsx`: разделы, категории, партнёры, соцсети, копирайт
+- [x] 25 статических страниц, `pnpm check` + `pnpm typecheck` + `pnpm build` зелёные
 
-### Phase 4 — Site Widgets
-- [ ] site-header (навигация)
-- [ ] site-footer (соцсети, партнёры)
-- [ ] SEO-метаданные (Open Graph, sitemap.xml, robots.txt)
-
-### Phase 5 — Migration
-- [ ] Написать скрипт конвертации CSV → MDX (парсинг полей, генерация frontmatter, slug из заголовка)
-- [ ] Прогнать скрипт по выгруженным CSV-файлам с Webflow
-- [ ] Проверить качество сконвертированных MDX-файлов (frontmatter, видео-ссылки, изображения)
+### ~~Phase 4+5 — Widgets + SEO + Migration~~ ✅ (2026-05-09)
+- [x] `src/widgets/site-header/` — шапка с лого, навигацией и dropdown Категорий
+- [x] `src/widgets/site-footer/` — подвал с 4 колонками: лого+соцсети, разделы, категории, партнёры
+- [x] `app/layout.tsx` — использует `SiteHeader` / `SiteFooter`, добавлены base OG-метаданные и `metadataBase`
+- [x] `app/sitemap.ts` — динамический sitemap.xml по всем маршрутам (materials, interviews, experts, categories)
+- [x] `app/robots.ts` — robots.txt, указывает на `/sitemap.xml`
+- [x] OG-метаданные (`openGraph`) добавлены в `generateMetadata` для materials, interviews, experts
+- [x] `SITE_URL` добавлен в `shared/config/index.ts`
+- [x] `scripts/csv-to-mdx.ts` — конвертер Webflow CSV → MDX, запуск: `npx tsx scripts/csv-to-mdx.ts --type <materials|interviews|experts> --input <file.csv>`
+- [x] 27 статических страниц + `/sitemap.xml` + `/robots.txt`, pnpm check + typecheck + build зелёные
+- [ ] Прогнать скрипт по реальным CSV-файлам из Webflow
 - [ ] Проверить все маршруты с реальным контентом
 
 ### Phase 6 — Launch
