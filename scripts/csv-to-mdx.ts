@@ -81,11 +81,19 @@ const CATEGORY_MAP: Record<string, string> = {
 
 // --- Video platform detection ---
 function detectPlatform(url: string): string | undefined {
-  if (!url) return undefined
-  if (url.includes("vk.com") || url.includes("vkvideo")) return "vkvideo"
-  if (url.includes("dzen.ru") || url.includes("zen.yandex")) return "dzen"
-  if (url.includes("youtube.com") || url.includes("youtu.be")) return "youtube"
-  return undefined
+  if (!url) {
+    return
+  }
+  if (url.includes("vk.com") || url.includes("vkvideo")) {
+    return "vkvideo"
+  }
+  if (url.includes("dzen.ru") || url.includes("zen.yandex")) {
+    return "dzen"
+  }
+  if (url.includes("youtube.com") || url.includes("youtu.be")) {
+    return "youtube"
+  }
+  return
 }
 
 // --- Slug generation ---
@@ -137,7 +145,9 @@ function slugify(text: string): string {
 // --- CSV parser (handles quoted fields with commas) ---
 function parseCSV(content: string): { headers: string[]; rows: Record<string, string>[] } {
   const lines = content.replace(/\r\n/g, "\n").replace(/\r/g, "\n").split("\n")
-  if (lines.length === 0) return { headers: [], rows: [] }
+  if (lines.length === 0) {
+    return { headers: [], rows: [] }
+  }
 
   function parseLine(line: string): string[] {
     const fields: string[] = []
@@ -169,7 +179,9 @@ function parseCSV(content: string): { headers: string[]; rows: Record<string, st
 
   for (let i = 1; i < lines.length; i++) {
     const line = lines[i].trim()
-    if (!line) continue
+    if (!line) {
+      continue
+    }
     const values = parseLine(line)
     const row: Record<string, string> = {}
     headers.forEach((h, idx) => {
@@ -184,28 +196,40 @@ function parseCSV(content: string): { headers: string[]; rows: Record<string, st
 // --- Find value by multiple possible column names ---
 function pick(row: Record<string, string>, candidates: string[]): string {
   for (const key of candidates) {
-    if (row[key] !== undefined && row[key] !== "") return row[key]
+    if (row[key] !== undefined && row[key] !== "") {
+      return row[key]
+    }
   }
   return ""
 }
 
 // --- ISO date normalization ---
 function normalizeDate(raw: string): string {
-  if (!raw) return new Date().toISOString().slice(0, 10)
+  if (!raw) {
+    return new Date().toISOString().slice(0, 10)
+  }
   // already ISO
-  if (/^\d{4}-\d{2}-\d{2}/.test(raw)) return raw.slice(0, 10)
+  if (/^\d{4}-\d{2}-\d{2}/.test(raw)) {
+    return raw.slice(0, 10)
+  }
   // DD.MM.YYYY
   const ddmmyyyy = raw.match(/^(\d{2})\.(\d{2})\.(\d{4})/)
-  if (ddmmyyyy) return `${ddmmyyyy[3]}-${ddmmyyyy[2]}-${ddmmyyyy[1]}`
+  if (ddmmyyyy) {
+    return `${ddmmyyyy[3]}-${ddmmyyyy[2]}-${ddmmyyyy[1]}`
+  }
   // Try JS Date parse
   const d = new Date(raw)
-  if (!Number.isNaN(d.getTime())) return d.toISOString().slice(0, 10)
+  if (!Number.isNaN(d.getTime())) {
+    return d.toISOString().slice(0, 10)
+  }
   return new Date().toISOString().slice(0, 10)
 }
 
 // --- YAML string escape ---
 function yamlStr(value: string): string {
-  if (!value) return '""'
+  if (!value) {
+    return '""'
+  }
   if (/[:#[\]{}&*!|>'"%@`,]/.test(value) || value.includes("\n")) {
     return `"${value.replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"`
   }
@@ -237,10 +261,18 @@ function buildMaterialFrontmatter(row: Record<string, string>): string {
     `date: "${date}"`,
     `excerpt: ${yamlStr(excerpt)}`,
   ]
-  if (image) lines.push(`image: ${yamlStr(image)}`)
-  if (videoUrl) lines.push(`videoUrl: ${yamlStr(videoUrl)}`)
-  if (platform) lines.push(`videoPlatform: ${platform}`)
-  if (featured) lines.push("featured: true")
+  if (image) {
+    lines.push(`image: ${yamlStr(image)}`)
+  }
+  if (videoUrl) {
+    lines.push(`videoUrl: ${yamlStr(videoUrl)}`)
+  }
+  if (platform) {
+    lines.push(`videoPlatform: ${platform}`)
+  }
+  if (featured) {
+    lines.push("featured: true")
+  }
   lines.push("---")
   return lines.join("\n")
 }
@@ -259,13 +291,23 @@ function buildInterviewFrontmatter(row: Record<string, string>): string {
   const featured = pick(row, INTERVIEW_COLUMNS.featured).toLowerCase() === "true"
 
   const lines = ["---", `title: ${yamlStr(title)}`, `slug: ${slug}`, `guest: ${yamlStr(guest)}`]
-  if (guestRole) lines.push(`guestRole: ${yamlStr(guestRole)}`)
+  if (guestRole) {
+    lines.push(`guestRole: ${yamlStr(guestRole)}`)
+  }
   lines.push(`date: "${date}"`)
   lines.push(`excerpt: ${yamlStr(excerpt)}`)
-  if (image) lines.push(`image: ${yamlStr(image)}`)
-  if (videoUrl) lines.push(`videoUrl: ${yamlStr(videoUrl)}`)
-  if (platform) lines.push(`videoPlatform: ${platform}`)
-  if (featured) lines.push("featured: true")
+  if (image) {
+    lines.push(`image: ${yamlStr(image)}`)
+  }
+  if (videoUrl) {
+    lines.push(`videoUrl: ${yamlStr(videoUrl)}`)
+  }
+  if (platform) {
+    lines.push(`videoPlatform: ${platform}`)
+  }
+  if (featured) {
+    lines.push("featured: true")
+  }
   lines.push("---")
   return lines.join("\n")
 }
@@ -294,17 +336,27 @@ function buildExpertFrontmatter(row: Record<string, string>): string {
     `name: ${yamlStr(name)}`,
     `slug: ${slug}`,
     `role: ${yamlStr(role)}`,
-    `specializations:`,
+    "specializations:",
     ...specializations.map((s) => `  - ${s}`),
     `bio: ${yamlStr(bio)}`,
   ]
-  if (image) lines.push(`image: ${yamlStr(image)}`)
+  if (image) {
+    lines.push(`image: ${yamlStr(image)}`)
+  }
   if (hasSocial) {
     lines.push("social:")
-    if (telegram) lines.push(`  telegram: ${yamlStr(telegram)}`)
-    if (instagram) lines.push(`  instagram: ${yamlStr(instagram)}`)
-    if (vk) lines.push(`  vk: ${yamlStr(vk)}`)
-    if (linkedin) lines.push(`  linkedin: ${yamlStr(linkedin)}`)
+    if (telegram) {
+      lines.push(`  telegram: ${yamlStr(telegram)}`)
+    }
+    if (instagram) {
+      lines.push(`  instagram: ${yamlStr(instagram)}`)
+    }
+    if (vk) {
+      lines.push(`  vk: ${yamlStr(vk)}`)
+    }
+    if (linkedin) {
+      lines.push(`  linkedin: ${yamlStr(linkedin)}`)
+    }
   }
   lines.push("---")
   return lines.join("\n")
@@ -312,6 +364,7 @@ function buildExpertFrontmatter(row: Record<string, string>): string {
 
 // --- Main ---
 
+// biome-ignore lint/complexity/noExcessiveCognitiveComplexity: temporary function
 function main() {
   const args = process.argv.slice(2)
   const typeIdx = args.indexOf("--type")
@@ -341,7 +394,9 @@ function main() {
   const { rows } = parseCSV(content)
 
   const outDir = path.join(process.cwd(), "content", type)
-  if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true })
+  if (!fs.existsSync(outDir)) {
+    fs.mkdirSync(outDir, { recursive: true })
+  }
 
   let written = 0
   let skipped = 0

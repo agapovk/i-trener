@@ -2,7 +2,7 @@ import { getAllExperts, getExpertBySlug } from "@shared/lib/mdx"
 import { ExpertDetailView } from "@views/expert-detail"
 import type { Metadata } from "next"
 
-type Props = {
+interface Props {
   params: Promise<{ slug: string }>
 }
 
@@ -13,7 +13,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const expert = getExpertBySlug(slug)
-  if (!expert) return {}
+  if (!expert) {
+    return {}
+  }
   const { name, bio, image } = expert.frontmatter
   return {
     title: name,

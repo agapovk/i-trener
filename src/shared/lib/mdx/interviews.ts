@@ -19,12 +19,14 @@ function parseFrontmatter(raw: unknown, filename: string): InterviewFrontmatter 
     image: optionalString(data, "image"),
     videoUrl: optionalString(data, "videoUrl"),
     videoPlatform: validateVideoPlatform(data, "videoPlatform", ctx),
-    featured: data.featured != null ? Boolean(data.featured) : undefined,
+    featured: data.featured == null ? undefined : Boolean(data.featured),
   }
 }
 
 export function getAllInterviews(): Interview[] {
-  if (!fs.existsSync(CONTENT_DIR)) return []
+  if (!fs.existsSync(CONTENT_DIR)) {
+    return []
+  }
   return fs
     .readdirSync(CONTENT_DIR)
     .filter((f) => f.endsWith(".mdx"))
@@ -38,7 +40,9 @@ export function getAllInterviews(): Interview[] {
 
 export function getInterviewBySlug(slug: string): (Interview & { content: string }) | null {
   const filepath = path.join(CONTENT_DIR, `${slug}.mdx`)
-  if (!fs.existsSync(filepath)) return null
+  if (!fs.existsSync(filepath)) {
+    return null
+  }
   const raw = fs.readFileSync(filepath, "utf8")
   const { data, content } = matter(raw)
   return { frontmatter: parseFrontmatter(data, `${slug}.mdx`), content }

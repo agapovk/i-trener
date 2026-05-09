@@ -40,10 +40,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ru" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-base text-primary">
+    <html className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} lang="ru">
+      <body className="flex min-h-full flex-col bg-base text-primary">
         <SiteHeader />
-        <div className="flex flex-col flex-1">{children}</div>
+        <div className="flex flex-1 flex-col">{children}</div>
         <SiteFooter />
       </body>
     </html>

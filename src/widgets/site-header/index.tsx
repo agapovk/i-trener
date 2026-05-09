@@ -1,13 +1,13 @@
-import { CATEGORIES, CATEGORY_LABELS, NAV_ITEMS } from "@shared/config"
+import { NAV_ITEMS } from "@shared/config"
 import Link from "next/link"
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border-subtle bg-base/90 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between gap-8">
+    <header className="sticky top-0 z-50 border-border-subtle border-b bg-base/90 backdrop-blur-sm">
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-8 px-4">
         <Link
+          className="shrink-0 font-extrabold text-lg text-primary tracking-tight transition-colors hover:text-accent"
           href="/"
-          className="text-lg font-extrabold text-primary hover:text-accent transition-colors tracking-tight shrink-0"
         >
           Я:Тренер
         </Link>
@@ -15,15 +15,15 @@ export function SiteHeader() {
         <nav className="flex items-center gap-6">
           {NAV_ITEMS.map(({ href, label }) => (
             <Link
-              key={href}
+              className="text-muted text-sm transition-colors hover:text-primary"
               href={href}
-              className="text-sm text-muted hover:text-primary transition-colors"
+              key={href}
             >
               {label}
             </Link>
           ))}
 
-          <div className="relative group">
+          {/* <div className="relative group">
             <button
               type="button"
               className="text-sm text-muted hover:text-primary transition-colors flex items-center gap-1"
@@ -53,7 +53,7 @@ export function SiteHeader() {
                 ))}
               </div>
             </div>
-          </div>
+          </div> */}
         </nav>
       </div>
     </header>

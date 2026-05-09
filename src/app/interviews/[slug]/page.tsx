@@ -2,7 +2,7 @@ import { getAllInterviews, getInterviewBySlug } from "@shared/lib/mdx"
 import { InterviewDetailView } from "@views/interview-detail"
 import type { Metadata } from "next"
 
-type Props = {
+interface Props {
   params: Promise<{ slug: string }>
 }
 
@@ -13,7 +13,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const interview = getInterviewBySlug(slug)
-  if (!interview) return {}
+  if (!interview) {
+    return {}
+  }
   const { title, excerpt, image } = interview.frontmatter
   return {
     title,

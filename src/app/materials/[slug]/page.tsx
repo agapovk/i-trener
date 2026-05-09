@@ -2,7 +2,7 @@ import { getAllMaterials, getMaterialBySlug } from "@shared/lib/mdx"
 import { MaterialDetailView } from "@views/material-detail"
 import type { Metadata } from "next"
 
-type Props = {
+interface Props {
   params: Promise<{ slug: string }>
 }
 
@@ -13,7 +13,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const material = getMaterialBySlug(slug)
-  if (!material) return {}
+  if (!material) {
+    return {}
+  }
   const { title, excerpt, image } = material.frontmatter
   return {
     title,

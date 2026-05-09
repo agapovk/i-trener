@@ -16,7 +16,7 @@ export function requireString(
 
 export function optionalString(data: Record<string, unknown>, field: string): string | undefined {
   const val = data[field]
-  return val != null ? String(val) : undefined
+  return val == null ? undefined : String(val)
 }
 
 export function validateCategory(
@@ -58,7 +58,9 @@ export function validateVideoPlatform(
   context: string,
 ): VideoPlatform | undefined {
   const val = data[field]
-  if (val == null) return undefined
+  if (val == null) {
+    return
+  }
   if (!VIDEO_PLATFORMS.includes(val as VideoPlatform)) {
     throw new Error(
       `[${context}] invalid value for "${field}": "${val}". Must be one of: ${VIDEO_PLATFORMS.join(", ")}`,

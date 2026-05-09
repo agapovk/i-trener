@@ -6,8 +6,8 @@ import Image from "next/image"
 import Link from "next/link"
 
 interface MaterialCardProps {
-  material: Material
   className?: string
+  material: Material
 }
 
 export function MaterialCard({ material, className }: MaterialCardProps) {
@@ -21,26 +21,26 @@ export function MaterialCard({ material, className }: MaterialCardProps) {
 
   return (
     <Link
-      href={`/materials/${fm.slug}`}
       className={cn(
-        "group flex flex-col bg-surface rounded-xl overflow-hidden border border-border",
-        "hover:border-accent transition-colors duration-200",
+        "group flex flex-col overflow-hidden rounded-xl border border-border bg-surface",
+        "transition-colors duration-200 hover:border-accent",
         className,
       )}
+      href={`/materials/${fm.slug}`}
     >
       {/* Thumbnail */}
-      <div className="relative aspect-video bg-elevated overflow-hidden">
+      <div className="relative aspect-video overflow-hidden bg-elevated">
         {fm.image ? (
           <Image
-            src={fm.image}
             alt={fm.title}
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            src={fm.image}
           />
         ) : (
-          <div className="absolute inset-0 flex items-end p-4 bg-linear-to-br from-elevated via-subtle to-elevated">
-            <span className="text-xs font-mono text-faint uppercase tracking-widest">
+          <div className="absolute inset-0 flex items-end bg-linear-to-br from-elevated via-subtle to-elevated p-4">
+            <span className="font-mono text-faint text-xs uppercase tracking-widest">
               {CATEGORY_LABELS[fm.category]}
             </span>
           </div>
@@ -55,24 +55,24 @@ export function MaterialCard({ material, className }: MaterialCardProps) {
       </div>
 
       {/* Content */}
-      <div className="flex flex-col gap-3 p-4 flex-1">
+      <div className="flex flex-1 flex-col gap-3 p-4">
         <div className="flex items-center justify-between gap-2">
-          <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-accent-dim text-accent shrink-0">
+          <span className="shrink-0 rounded-full bg-accent-dim px-2 py-0.5 font-medium text-accent text-xs">
             {CATEGORY_LABELS[fm.category]}
           </span>
-          <time dateTime={fm.date} className="text-xs font-mono text-faint truncate">
+          <time className="truncate font-mono text-faint text-xs" dateTime={fm.date}>
             {formattedDate}
           </time>
         </div>
 
-        <h3 className="text-lg font-extrabold text-primary leading-snug line-clamp-2 group-hover:text-accent transition-colors">
+        <h3 className="line-clamp-2 font-extrabold text-lg text-primary leading-snug transition-colors group-hover:text-accent">
           {fm.title}
         </h3>
 
-        <p className="text-sm text-muted line-clamp-2 leading-relaxed">{fm.excerpt}</p>
+        <p className="line-clamp-2 text-muted text-sm leading-relaxed">{fm.excerpt}</p>
 
-        <div className="mt-auto pt-2 border-t border-border-subtle">
-          <span className="text-xs text-faint">{fm.author}</span>
+        <div className="mt-auto border-border-subtle border-t pt-2">
+          <span className="text-faint text-xs">{fm.author}</span>
         </div>
       </div>
     </Link>
