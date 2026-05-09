@@ -12,3 +12,12 @@ export const SOCIAL_LINKS = {
   telegram: "https://t.me/itrener",
   vk: "https://vk.com/itrener",
 } as const
+
+export const PARTNERS = [
+  { name: "Mad-Sports", description: "Спортивное оборудование" },
+  { name: "Tacticboard", description: "Тактические инструменты" },
+  { name: "NatAdvance", description: "Спортивная одежда" },
+  { name: "Sports.ru", description: "Медиапартнёр" },
+  { name: "Authentic.Football", description: "Организация мероприятий" },
+  { name: "Championat.Shop", description: "Мерч и настольные игры" },
+] as const

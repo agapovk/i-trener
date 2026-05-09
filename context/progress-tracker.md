@@ -6,13 +6,13 @@
 
 ## Текущая фаза
 
-- **Phase 3 — Secondary Pages** — не начата
+- **Phase 4 — Site Widgets** — не начата
 
 ---
 
 ## Текущая цель
 
-Реализовать вторичные страницы: категории, партнёры, контакты.
+Реализовать site-header (навигация) и site-footer (соцсети, партнёры).
 
 ---
 
@@ -36,7 +36,7 @@
 
 ## В прогрессе
 
-Ничего. Phase 2 завершена, Phase 3 не начата.
+Ничего. Phase 3 завершена, Phase 4 не начата.
 
 ---
 
@@ -57,10 +57,13 @@
 - [x] `generateStaticParams` + `generateMetadata` для всех динамических маршрутов
 - [x] 16 статических страниц, `pnpm check` + `pnpm typecheck` + `pnpm build` зелёные
 
-### Phase 3 — Secondary Pages
-- [ ] Страница категории
-- [ ] Партнёры
-- [ ] Контакты
+### ~~Phase 3 — Secondary Pages~~ ✅ (2026-05-09)
+- [x] Страница категории (`/categories/[category]`) — фильтрация материалов по категории, `notFound()` для несуществующих slug
+- [x] Партнёры (`/partners/`) — статическая страница, данные в `shared/config`
+- [x] Контакты (`/contacts/`) — соцсети и форма сотрудничества с `SOCIAL_LINKS`
+- [x] `PARTNERS` добавлены в `shared/config/index.ts`
+- [x] Footer добавлен в `app/layout.tsx`: разделы, категории, партнёры, соцсети, копирайт
+- [x] 25 статических страниц, `pnpm check` + `pnpm typecheck` + `pnpm build` зелёные
 
 ### Phase 4 — Site Widgets
 - [ ] site-header (навигация)
