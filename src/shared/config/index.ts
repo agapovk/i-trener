@@ -1,6 +1,8 @@
 export type { Category, VideoPlatform } from "./categories"
 export { CATEGORIES, CATEGORY_LABELS } from "./categories"
 
+export const SITE_URL = "https://i-trener.ru"
+
 export const NAV_ITEMS = [
   { label: "Материалы", href: "/materials" },
   { label: "Интервью", href: "/interviews" },

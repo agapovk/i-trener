@@ -6,13 +6,13 @@
 
 ## Текущая фаза
 
-- **Phase 4 — Site Widgets** — не начата
+- **Phase 6 — Launch** — не начата
 
 ---
 
 ## Текущая цель
 
-Реализовать site-header (навигация) и site-footer (соцсети, партнёры).
+Подключить домен i-trener.ru на Vercel, прогнать csv-to-mdx по реальным данным Webflow, проверить Pagespeed.
 
 ---
 
@@ -36,7 +36,7 @@
 
 ## В прогрессе
 
-Ничего. Phase 3 завершена, Phase 4 не начата.
+Ничего. Phase 4+5 завершена, Phase 6 (Launch) не начата.
 
 ---
 
@@ -65,15 +65,17 @@
 - [x] Footer добавлен в `app/layout.tsx`: разделы, категории, партнёры, соцсети, копирайт
 - [x] 25 статических страниц, `pnpm check` + `pnpm typecheck` + `pnpm build` зелёные
 
-### Phase 4 — Site Widgets
-- [ ] site-header (навигация)
-- [ ] site-footer (соцсети, партнёры)
-- [ ] SEO-метаданные (Open Graph, sitemap.xml, robots.txt)
-
-### Phase 5 — Migration
-- [ ] Написать скрипт конвертации CSV → MDX (парсинг полей, генерация frontmatter, slug из заголовка)
-- [ ] Прогнать скрипт по выгруженным CSV-файлам с Webflow
-- [ ] Проверить качество сконвертированных MDX-файлов (frontmatter, видео-ссылки, изображения)
+### ~~Phase 4+5 — Widgets + SEO + Migration~~ ✅ (2026-05-09)
+- [x] `src/widgets/site-header/` — шапка с лого, навигацией и dropdown Категорий
+- [x] `src/widgets/site-footer/` — подвал с 4 колонками: лого+соцсети, разделы, категории, партнёры
+- [x] `app/layout.tsx` — использует `SiteHeader` / `SiteFooter`, добавлены base OG-метаданные и `metadataBase`
+- [x] `app/sitemap.ts` — динамический sitemap.xml по всем маршрутам (materials, interviews, experts, categories)
+- [x] `app/robots.ts` — robots.txt, указывает на `/sitemap.xml`
+- [x] OG-метаданные (`openGraph`) добавлены в `generateMetadata` для materials, interviews, experts
+- [x] `SITE_URL` добавлен в `shared/config/index.ts`
+- [x] `scripts/csv-to-mdx.ts` — конвертер Webflow CSV → MDX, запуск: `npx tsx scripts/csv-to-mdx.ts --type <materials|interviews|experts> --input <file.csv>`
+- [x] 27 статических страниц + `/sitemap.xml` + `/robots.txt`, pnpm check + typecheck + build зелёные
+- [ ] Прогнать скрипт по реальным CSV-файлам из Webflow
 - [ ] Проверить все маршруты с реальным контентом
 
 ### Phase 6 — Launch

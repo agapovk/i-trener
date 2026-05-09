@@ -14,9 +14,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const expert = getExpertBySlug(slug)
   if (!expert) return {}
+  const { name, bio, image } = expert.frontmatter
   return {
-    title: expert.frontmatter.name,
-    description: expert.frontmatter.bio,
+    title: name,
+    description: bio,
+    openGraph: {
+      title: name,
+      description: bio,
+      type: "profile",
+      ...(image ? { images: [{ url: image }] } : {}),
+    },
   }
 }
 
