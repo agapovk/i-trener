@@ -22,32 +22,43 @@ export function ExpertCard({ expert, className }: ExpertCardProps) {
         className,
       )}
     >
-      <div className="relative h-16 w-16 rounded-full bg-subtle overflow-hidden shrink-0">
+      <div className="relative h-14 w-14 rounded-full bg-elevated overflow-hidden shrink-0 border border-border">
         {fm.image ? (
-          <Image src={fm.image} alt={fm.name} fill sizes="64px" className="object-cover" />
+          <Image src={fm.image} alt={fm.name} fill sizes="56px" className="object-cover" />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
-            <User className="h-6 w-6 text-muted" />
+            <User className="h-5 w-5 text-muted" />
           </div>
         )}
       </div>
 
-      <div className="flex flex-col gap-1.5 min-w-0">
+      <div className="flex flex-col gap-1.5 min-w-0 flex-1">
         <div>
-          <h3 className="text-base font-extrabold text-primary leading-tight group-hover:text-accent transition-colors truncate">
+          <h3 className="text-sm font-extrabold text-primary leading-tight group-hover:text-accent transition-colors truncate">
             {fm.name}
           </h3>
-          <p className="text-sm text-muted truncate">{fm.role}</p>
+          <p className="text-xs text-muted truncate">{fm.role}</p>
         </div>
-
         <div className="flex flex-wrap gap-1">
-          {fm.specializations.map((spec) => (
-            <span key={spec} className="text-xs px-2 py-0.5 rounded-full bg-accent-dim text-accent">
+          {fm.specializations.slice(0, 2).map((spec) => (
+            <span
+              key={spec}
+              className="text-xs px-1.5 py-0.5 rounded-full bg-accent-dim text-accent"
+            >
               {CATEGORY_LABELS[spec]}
             </span>
           ))}
+          {fm.specializations.length > 2 && (
+            <span className="text-xs px-1.5 py-0.5 rounded-full bg-subtle text-faint">
+              +{fm.specializations.length - 2}
+            </span>
+          )}
         </div>
       </div>
+
+      <span className="text-muted text-sm shrink-0 group-hover:text-accent transition-colors">
+        →
+      </span>
     </Link>
   )
 }
