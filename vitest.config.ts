@@ -9,11 +9,11 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@shared": path.resolve(__dirname, "./src/shared"),
-      "@entities": path.resolve(__dirname, "./src/entities"),
-      "@features": path.resolve(__dirname, "./src/features"),
-      "@widgets": path.resolve(__dirname, "./src/widgets"),
-      "@views": path.resolve(__dirname, "./src/views"),
+      "@shared": path.resolve(import.meta.dirname, "./src/shared"),
+      "@entities": path.resolve(import.meta.dirname, "./src/entities"),
+      "@features": path.resolve(import.meta.dirname, "./src/features"),
+      "@widgets": path.resolve(import.meta.dirname, "./src/widgets"),
+      "@views": path.resolve(import.meta.dirname, "./src/views"),
     },
   },
 })

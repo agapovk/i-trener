@@ -24,52 +24,52 @@ const socialChannels = [
 
 export function ContactsView() {
   return (
-    <main className="flex flex-col gap-12 px-4 py-12 max-w-7xl mx-auto w-full">
+    <main className="mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 py-12">
       <div className="flex flex-col gap-3">
-        <h1 className="text-5xl font-extrabold text-primary">Контакты</h1>
-        <p className="text-muted max-w-xl leading-relaxed">
+        <h1 className="font-extrabold text-5xl text-primary">Контакты</h1>
+        <p className="max-w-xl text-muted leading-relaxed">
           Свяжитесь с нами в социальных сетях или напишите напрямую.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         <section className="flex flex-col gap-4">
-          <h2 className="text-2xl font-extrabold text-primary">Социальные сети</h2>
+          <h2 className="font-extrabold text-2xl text-primary">Социальные сети</h2>
           <div className="flex flex-col gap-3">
             {socialChannels.map(({ label, href, icon: Icon, description }) => (
               <a
-                key={label}
+                className="group flex items-center gap-4 rounded-xl border border-border bg-surface p-4 transition-colors hover:border-accent"
                 href={href}
-                target="_blank"
+                key={label}
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 p-4 bg-surface rounded-xl border border-border hover:border-accent transition-colors"
+                target="_blank"
               >
-                <div className="flex-shrink-0 h-10 w-10 rounded-lg bg-elevated flex items-center justify-center group-hover:bg-accent-dim transition-colors">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-elevated transition-colors group-hover:bg-accent-dim">
                   <Icon className="h-5 w-5 text-accent" />
                 </div>
-                <div className="flex flex-col gap-0.5 flex-1 min-w-0">
-                  <span className="font-semibold text-primary group-hover:text-accent transition-colors">
+                <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+                  <span className="font-semibold text-primary transition-colors group-hover:text-accent">
                     {label}
                   </span>
-                  <span className="text-sm text-muted">{description}</span>
+                  <span className="text-muted text-sm">{description}</span>
                 </div>
-                <ExternalLink className="h-4 w-4 text-faint group-hover:text-accent transition-colors flex-shrink-0" />
+                <ExternalLink className="h-4 w-4 shrink-0 text-faint transition-colors group-hover:text-accent" />
               </a>
             ))}
           </div>
         </section>
 
         <section className="flex flex-col gap-4">
-          <h2 className="text-2xl font-extrabold text-primary">Сотрудничество</h2>
-          <div className="p-6 bg-surface rounded-xl border border-border flex flex-col gap-4">
+          <h2 className="font-extrabold text-2xl text-primary">Сотрудничество</h2>
+          <div className="flex flex-col gap-4 rounded-xl border border-border bg-surface p-6">
             <p className="text-muted leading-relaxed">
               По вопросам партнёрства, размещения материалов и сотрудничества пишите нам в Telegram.
             </p>
             <a
+              className="inline-flex w-fit items-center gap-2 rounded-lg bg-accent px-5 py-2.5 font-semibold text-sm text-white transition-opacity hover:opacity-90"
               href={SOCIAL_LINKS.telegram}
-              target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white rounded-lg font-semibold text-sm hover:opacity-90 transition-opacity w-fit"
+              target="_blank"
             >
               <Send className="h-4 w-4" />
               Написать в Telegram

@@ -10,9 +10,9 @@ export const NAV_ITEMS = [
 ] as const
 
 export const SOCIAL_LINKS = {
-  instagram: "https://instagram.com/itrener",
-  telegram: "https://t.me/itrener",
-  vk: "https://vk.com/itrener",
+  instagram: "https://instagram.com/i.trener.ru",
+  telegram: "https://t.me/itrenerru",
+  vk: "https://vk.com/i_trener_ru",
 } as const
 
 export const PARTNERS = [

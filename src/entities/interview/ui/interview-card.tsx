@@ -5,8 +5,8 @@ import Image from "next/image"
 import Link from "next/link"
 
 interface InterviewCardProps {
-  interview: Interview
   className?: string
+  interview: Interview
 }
 
 export function InterviewCard({ interview, className }: InterviewCardProps) {
@@ -20,22 +20,22 @@ export function InterviewCard({ interview, className }: InterviewCardProps) {
 
   return (
     <Link
-      href={`/interviews/${fm.slug}`}
       className={cn(
-        "group flex flex-col bg-surface rounded-xl overflow-hidden border border-border",
-        "hover:border-accent transition-colors duration-200",
+        "group flex flex-col overflow-hidden rounded-xl border border-border bg-surface",
+        "transition-colors duration-200 hover:border-accent",
         className,
       )}
+      href={`/interviews/${fm.slug}`}
     >
       {/* Thumbnail */}
-      <div className="relative aspect-video bg-elevated overflow-hidden">
+      <div className="relative aspect-video overflow-hidden bg-elevated">
         {fm.image ? (
           <Image
-            src={fm.image}
             alt={fm.guest}
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            src={fm.image}
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-elevated via-subtle to-elevated">
@@ -52,22 +52,22 @@ export function InterviewCard({ interview, className }: InterviewCardProps) {
       </div>
 
       {/* Content */}
-      <div className="flex flex-col gap-3 p-4 flex-1">
+      <div className="flex flex-1 flex-col gap-3 p-4">
         <div className="flex items-center justify-between gap-2">
-          <div className="flex flex-col min-w-0">
-            <span className="text-sm font-semibold text-primary truncate">{fm.guest}</span>
-            {fm.guestRole && <span className="text-xs text-muted truncate">{fm.guestRole}</span>}
+          <div className="flex min-w-0 flex-col">
+            <span className="truncate font-semibold text-primary text-sm">{fm.guest}</span>
+            {fm.guestRole && <span className="truncate text-muted text-xs">{fm.guestRole}</span>}
           </div>
-          <time dateTime={fm.date} className="text-xs font-mono text-faint shrink-0">
+          <time className="shrink-0 font-mono text-faint text-xs" dateTime={fm.date}>
             {formattedDate}
           </time>
         </div>
 
-        <h3 className="text-lg font-extrabold text-primary leading-snug line-clamp-2 group-hover:text-accent transition-colors">
+        <h3 className="line-clamp-2 font-extrabold text-lg text-primary leading-snug transition-colors group-hover:text-accent">
           {fm.title}
         </h3>
 
-        <p className="text-sm text-muted line-clamp-2 leading-relaxed">{fm.excerpt}</p>
+        <p className="line-clamp-2 text-muted text-sm leading-relaxed">{fm.excerpt}</p>
       </div>
     </Link>
   )

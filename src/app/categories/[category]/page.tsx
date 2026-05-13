@@ -2,7 +2,7 @@ import { CATEGORIES, CATEGORY_LABELS, type Category } from "@shared/config"
 import { CategoryView } from "@views/category"
 import type { Metadata } from "next"
 
-type Props = {
+interface Props {
   params: Promise<{ category: string }>
 }
 

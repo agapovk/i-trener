@@ -1,16 +1,16 @@
 import type { Category, VideoPlatform } from "@shared/config"
 
 export interface MaterialFrontmatter {
-  title: string
-  slug: string
-  category: Category
   author: string
+  category: Category
   date: string
   excerpt: string
-  image?: string
-  videoUrl?: string
-  videoPlatform?: VideoPlatform
   featured?: boolean
+  image?: string
+  slug: string
+  title: string
+  videoPlatform?: VideoPlatform
+  videoUrl?: string
 }
 
 export interface Material {

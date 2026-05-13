@@ -9,9 +9,11 @@ interface MaterialDetailViewProps {
   slug: string
 }
 
-export async function MaterialDetailView({ slug }: MaterialDetailViewProps) {
+export function MaterialDetailView({ slug }: MaterialDetailViewProps) {
   const material = getMaterialBySlug(slug)
-  if (!material) notFound()
+  if (!material) {
+    notFound()
+  }
 
   const { frontmatter: fm, content } = material
 
@@ -22,26 +24,26 @@ export async function MaterialDetailView({ slug }: MaterialDetailViewProps) {
   })
 
   return (
-    <main className="px-4 py-10 max-w-3xl mx-auto w-full flex flex-col gap-10">
-      <Link href="/materials" className="text-sm text-muted hover:text-accent transition-colors">
+    <main className="mx-auto flex w-full max-w-3xl flex-col gap-10 px-4 py-10">
+      <Link className="text-muted text-sm transition-colors hover:text-accent" href="/materials">
         ← Материалы
       </Link>
 
       <article className="flex flex-col gap-8">
-        <header className="flex flex-col gap-4 pb-8 border-b border-border-subtle">
-          <div className="flex items-center gap-3 flex-wrap">
-            <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-accent-dim text-accent">
+        <header className="flex flex-col gap-4 border-border-subtle border-b pb-8">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="rounded-full bg-accent-dim px-2.5 py-1 font-medium text-accent text-xs">
               {CATEGORY_LABELS[fm.category]}
             </span>
-            <time dateTime={fm.date} className="text-xs font-mono text-muted">
+            <time className="font-mono text-muted text-xs" dateTime={fm.date}>
               {formattedDate}
             </time>
           </div>
-          <h1 className="text-4xl font-extrabold text-primary leading-tight">{fm.title}</h1>
-          <p className="text-sm text-muted">Автор: {fm.author}</p>
+          <h1 className="font-extrabold text-4xl text-primary leading-tight">{fm.title}</h1>
+          <p className="text-muted text-sm">Автор: {fm.author}</p>
         </header>
 
-        {fm.videoUrl && <VideoEmbed url={fm.videoUrl} title={fm.title} />}
+        {fm.videoUrl && <VideoEmbed title={fm.title} url={fm.videoUrl} />}
 
         {content.trim() && (
           <Prose>

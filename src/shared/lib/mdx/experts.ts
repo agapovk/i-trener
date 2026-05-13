@@ -16,12 +16,14 @@ function parseFrontmatter(raw: unknown, filename: string): ExpertFrontmatter {
     specializations: validateCategories(data, "specializations", ctx),
     bio: requireString(data, "bio", ctx),
     image: optionalString(data, "image"),
-    social: data.social != null ? (data.social as ExpertFrontmatter["social"]) : undefined,
+    social: data.social == null ? undefined : (data.social as ExpertFrontmatter["social"]),
   }
 }
 
 export function getAllExperts(): Expert[] {
-  if (!fs.existsSync(CONTENT_DIR)) return []
+  if (!fs.existsSync(CONTENT_DIR)) {
+    return []
+  }
   return fs
     .readdirSync(CONTENT_DIR)
     .filter((f) => f.endsWith(".mdx"))
@@ -34,7 +36,9 @@ export function getAllExperts(): Expert[] {
 
 export function getExpertBySlug(slug: string): (Expert & { content: string }) | null {
   const filepath = path.join(CONTENT_DIR, `${slug}.mdx`)
-  if (!fs.existsSync(filepath)) return null
+  if (!fs.existsSync(filepath)) {
+    return null
+  }
   const raw = fs.readFileSync(filepath, "utf8")
   const { data, content } = matter(raw)
   return { frontmatter: parseFrontmatter(data, `${slug}.mdx`), content }

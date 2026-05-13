@@ -6,6 +6,7 @@
 
 ## Текущая фаза
 
+- **chore/fix-ui** — завершена (2026-05-13)
 - **Phase 6 — Launch** — не начата
 
 ---
@@ -36,7 +37,7 @@
 
 ## В прогрессе
 
-Ничего. Phase 4+5 завершена, Phase 6 (Launch) не начата.
+Ничего. chore/fix-ui завершена, Phase 6 (Launch) не начата.
 
 ---
 
@@ -77,6 +78,17 @@
 - [x] 27 статических страниц + `/sitemap.xml` + `/robots.txt`, pnpm check + typecheck + build зелёные
 - [ ] Прогнать скрипт по реальным CSV-файлам из Webflow
 - [ ] Проверить все маршруты с реальным контентом
+
+### ~~chore/fix-ui — UI overhaul~~ ✅ (2026-05-13)
+- [x] `globals.css` — CSS-переменные shadcn переписаны на OKLCH; добавлен блок `.dark` с полной тёмной палитрой
+- [x] `layout.tsx` — подключены шрифты IBM Plex Sans (body) и Geist (heading) через `next/font/google`
+- [x] `shared/ui/bg-layers.tsx` — текстурные компоненты: GridDotsLayer, HatchLayer, ScanLinesLayer, CrosshatchLayer, GridLinesLayer
+- [x] `shared/ui/noise-layer.tsx` — SVG-шум компоненты: NoiseLayer, CoarseNoiseLayer, TurbulenceLayer, MarbleLayer, StaticLayer, CloudLayer, VignetteLayer
+- [x] `shared/ui/button.tsx` — обновлён под новую дизайн-систему
+- [x] `shared/config/index.ts` — исправлены URL соцсетей (instagram, telegram, vk)
+- [x] `site-header` / `site-footer` — рефакторинг под новые токены
+- [x] `public/whistle.svg`, `public/wh2.svg` — добавлены SVG-ассеты
+- [x] `pnpm check` + `pnpm typecheck` + `pnpm build` — зелёные
 
 ### Phase 6 — Launch
 - [ ] Подключение домена i-trener.ru на Vercel

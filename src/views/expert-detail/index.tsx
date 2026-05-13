@@ -11,23 +11,25 @@ interface ExpertDetailViewProps {
   slug: string
 }
 
-export async function ExpertDetailView({ slug }: ExpertDetailViewProps) {
+export function ExpertDetailView({ slug }: ExpertDetailViewProps) {
   const expert = getExpertBySlug(slug)
-  if (!expert) notFound()
+  if (!expert) {
+    notFound()
+  }
 
   const { frontmatter: fm, content } = expert
 
   return (
-    <main className="px-4 py-10 max-w-3xl mx-auto w-full flex flex-col gap-10">
-      <Link href="/experts" className="text-sm text-muted hover:text-accent transition-colors">
+    <main className="mx-auto flex w-full max-w-3xl flex-col gap-10 px-4 py-10">
+      <Link className="text-muted text-sm transition-colors hover:text-accent" href="/experts">
         ← Эксперты
       </Link>
 
       <article className="flex flex-col gap-8">
-        <header className="flex items-start gap-6 pb-8 border-b border-border-subtle">
-          <div className="relative h-24 w-24 rounded-full bg-elevated overflow-hidden shrink-0 border border-border">
+        <header className="flex items-start gap-6 border-border-subtle border-b pb-8">
+          <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full border border-border bg-elevated">
             {fm.image ? (
-              <Image src={fm.image} alt={fm.name} fill sizes="96px" className="object-cover" />
+              <Image alt={fm.name} className="object-cover" fill sizes="96px" src={fm.image} />
             ) : (
               <div className="absolute inset-0 flex items-center justify-center">
                 <User className="h-8 w-8 text-muted" />
@@ -36,13 +38,13 @@ export async function ExpertDetailView({ slug }: ExpertDetailViewProps) {
           </div>
 
           <div className="flex flex-col gap-2">
-            <h1 className="text-4xl font-extrabold text-primary leading-tight">{fm.name}</h1>
+            <h1 className="font-extrabold text-4xl text-primary leading-tight">{fm.name}</h1>
             <p className="text-muted">{fm.role}</p>
             <div className="flex flex-wrap gap-1.5">
               {fm.specializations.map((spec) => (
                 <span
+                  className="rounded-full bg-accent-dim px-2.5 py-0.5 text-accent text-xs"
                   key={spec}
-                  className="text-xs px-2.5 py-0.5 rounded-full bg-accent-dim text-accent"
                 >
                   {CATEGORY_LABELS[spec]}
                 </span>
@@ -57,10 +59,10 @@ export async function ExpertDetailView({ slug }: ExpertDetailViewProps) {
           <div className="flex gap-4">
             {fm.social.telegram && (
               <a
+                className="flex items-center gap-1.5 text-muted text-sm transition-colors hover:text-accent"
                 href={fm.social.telegram}
-                target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-sm text-muted hover:text-accent transition-colors"
+                target="_blank"
               >
                 <Send className="h-4 w-4" />
                 Telegram
@@ -68,10 +70,10 @@ export async function ExpertDetailView({ slug }: ExpertDetailViewProps) {
             )}
             {fm.social.instagram && (
               <a
+                className="flex items-center gap-1.5 text-muted text-sm transition-colors hover:text-accent"
                 href={fm.social.instagram}
-                target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-sm text-muted hover:text-accent transition-colors"
+                target="_blank"
               >
                 <ExternalLink className="h-4 w-4" />
                 Instagram
@@ -79,10 +81,10 @@ export async function ExpertDetailView({ slug }: ExpertDetailViewProps) {
             )}
             {fm.social.vk && (
               <a
+                className="flex items-center gap-1.5 text-muted text-sm transition-colors hover:text-accent"
                 href={fm.social.vk}
-                target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-sm text-muted hover:text-accent transition-colors"
+                target="_blank"
               >
                 <ExternalLink className="h-4 w-4" />
                 VK
