@@ -1,11 +1,13 @@
 import { CATEGORIES, CATEGORY_LABELS, NAV_ITEMS, PARTNERS, SOCIAL_LINKS } from "@shared/config"
 import Link from "next/link"
+import { VignetteLayer } from "@/shared/ui"
 
 export function SiteFooter() {
   return (
-    <footer className="mt-auto border-border-subtle border-t bg-surface">
-      <div className="mx-auto max-w-7xl gap-10 px-4 py-12 md:grid-cols-4">
-        <div className="flex flex-col gap-3">
+    <footer className="relative mt-auto overflow-hidden border-border-subtle border-t bg-surface">
+      <VignetteLayer />
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 md:grid-cols-3 lg:grid-cols-5">
+        <div className="flex flex-col gap-3 md:col-span-3 lg:col-span-2">
           <Link
             className="font-extrabold text-lg text-primary tracking-tight transition-colors hover:text-accent"
             href="/"
@@ -15,7 +17,7 @@ export function SiteFooter() {
           <p className="text-muted text-sm leading-relaxed">
             Медиаплатформа и база знаний для тренеров по футболу.
           </p>
-          <div className="flex items-center gap-4 pt-1">
+          <div className="flex flex-wrap items-center gap-4 pt-1">
             <a
               className="text-muted text-sm transition-colors hover:text-accent"
               href={SOCIAL_LINKS.telegram}

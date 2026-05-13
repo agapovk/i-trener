@@ -1,8 +1,13 @@
 import { SiteFooter } from "@widgets/site-footer"
 import { SiteHeader } from "@widgets/site-header"
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Geist, Geist_Mono, IBM_Plex_Sans } from "next/font/google"
 import "./globals.css"
+import { cn } from "@/shared/lib/utils"
+
+const geistHeading = Geist({ subsets: ["latin"], variable: "--font-heading" })
+
+const ibmPlexSans = IBM_Plex_Sans({ subsets: ["latin"], variable: "--font-sans" })
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,7 +45,18 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} lang="ru">
+    <html
+      className={cn(
+        "h-full",
+        "antialiased",
+        geistSans.variable,
+        geistMono.variable,
+        "font-sans",
+        ibmPlexSans.variable,
+        geistHeading.variable,
+      )}
+      lang="ru"
+    >
       <body className="flex min-h-full flex-col bg-base text-primary">
         <SiteHeader />
         <div className="flex flex-1 flex-col">{children}</div>

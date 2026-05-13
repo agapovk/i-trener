@@ -3,6 +3,8 @@ import { InterviewCard } from "@entities/interview"
 import { MaterialCard } from "@entities/material"
 import { getAllExperts, getAllInterviews, getAllMaterials } from "@shared/lib/mdx"
 import Link from "next/link"
+import { CATEGORIES, CATEGORY_LABELS } from "@/shared/config"
+import { NoiseLayer } from "@/shared/ui"
 
 export function HomeView() {
   const materials = getAllMaterials().slice(0, 6)
@@ -12,38 +14,44 @@ export function HomeView() {
   return (
     <main className="flex flex-col">
       {/* Hero */}
-      <section className="border-border-subtle border-b">
+      <section className="relative border-border-subtle border-b">
+        <NoiseLayer />
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-16 md:py-24">
           <div className="h-1 w-16 rounded-full bg-accent" />
           <h1 className="max-w-3xl font-extrabold text-5xl text-primary leading-none tracking-tight md:text-7xl">
-            База знаний для тренеров по футболу
+            База знаний для
+            <br />
+            <span className="text-accent"> футбольных тренеров</span>
           </h1>
           <p className="max-w-xl text-muted text-xl leading-relaxed">
             Статьи, интервью и профили экспертов на русском языке.
           </p>
-          <div className="flex flex-wrap gap-3 pt-2">
-            <Link
-              className="rounded-lg bg-accent px-6 py-2.5 font-semibold text-sm text-white transition-opacity hover:opacity-90"
-              href="/materials"
-            >
-              Материалы
-            </Link>
-            <Link
-              className="rounded-lg border border-border bg-elevated px-6 py-2.5 font-semibold text-primary text-sm transition-colors hover:border-accent"
-              href="/interviews"
-            >
-              Интервью
-            </Link>
-            <Link
-              className="rounded-lg border border-border bg-elevated px-6 py-2.5 font-semibold text-primary text-sm transition-colors hover:border-accent"
-              href="/experts"
-            >
-              Эксперты
-            </Link>
-          </div>
         </div>
       </section>
 
+      {/* Categories */}
+      <section
+        className="relative"
+        style={{ borderBottom: "1px solid var(--border-subtle)", padding: "12px 0" }}
+      >
+        <NoiseLayer />
+        <div className="scroll-x no-scrollbar mx-auto flex max-w-7xl items-center gap-4 overflow-auto px-4">
+          <span className="whitespace-nowrap font-mono text-accent text-xs uppercase">
+            Категории:
+          </span>
+          {CATEGORIES.map((cat) => (
+            <Link
+              className="whitespace-nowrap rounded-lg bg-elevated px-4 py-2 font-medium text-muted text-sm transition-opacity hover:opacity-90"
+              href={`/categories/${cat}`}
+              key={cat}
+            >
+              {CATEGORY_LABELS[cat]}
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Materials */}
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-16 px-4 py-16">
         {materials.length > 0 && (
           <section className="flex flex-col gap-6">
@@ -64,6 +72,7 @@ export function HomeView() {
           </section>
         )}
 
+        {/* Interviews */}
         {interviews.length > 0 && (
           <section className="flex flex-col gap-6">
             <div className="flex items-baseline justify-between">
@@ -83,6 +92,7 @@ export function HomeView() {
           </section>
         )}
 
+        {/* Experts */}
         {experts.length > 0 && (
           <section className="flex flex-col gap-6">
             <div className="flex items-baseline justify-between">
