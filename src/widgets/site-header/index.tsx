@@ -1,4 +1,5 @@
 import { NAV_ITEMS } from "@shared/config"
+import { ThemeToggle } from "@shared/ui/theme-toggle"
 import Link from "next/link"
 
 export function SiteHeader() {
@@ -33,6 +34,8 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
+
+        <ThemeToggle />
       </div>
     </header>
   )

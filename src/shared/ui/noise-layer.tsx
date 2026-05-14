@@ -78,7 +78,7 @@ export const VignetteLayer = () => (
   <div
     style={{
       ...base,
-      background: "radial-gradient(ellipse at 50% 0%, transparent 50%, rgba(0,0,0,0.45) 100%)",
+      background: "radial-gradient(ellipse at 50% 0%, transparent 50%, var(--vignette-color) 100%)",
     }}
   />
 )

@@ -6,14 +6,14 @@
 
 ## Текущая фаза
 
-- **chore/fix-ui** — завершена (2026-05-13)
+- **feat/light-theme** — завершена (2026-05-14)
 - **Phase 6 — Launch** — не начата
 
 ---
 
 ## Текущая цель
 
-Подключить домен i-trener.ru на Vercel, прогнать csv-to-mdx по реальным данным Webflow, проверить Pagespeed.
+Подключить домен i-trener.ru на Vercel, настроить env vars, проверить Pagespeed 90+.
 
 ---
 
@@ -37,7 +37,7 @@
 
 ## В прогрессе
 
-Ничего. chore/fix-ui завершена, Phase 6 (Launch) не начата.
+Ничего. feat/import-real-content завершена и смёржена (PR #6), Phase 6 (Launch) не начата.
 
 ---
 
@@ -79,6 +79,8 @@
 - [x] Прогнать скрипт по реальным CSV-файлам из Webflow (ветка feat/import-real-content, 2026-05-14)
   - 42 материала, 9 интервью, 25 экспертов (5 archived/draft пропущено)
   - Скрипт обновлён: новый CSV-парсер для Webflow (multiline + bare quotes в HTML), маппинги реальных колонок
+- [x] Картинки скачаны локально в `public/images/` и MDX обновлён на локальные пути (2026-05-14)
+- [x] YouTube embed URL исправлены (embed/ формат), добавлен loading spinner в VideoEmbed (2026-05-14)
 - [ ] Проверить все маршруты с реальным контентом
 
 ### ~~chore/fix-ui — UI overhaul~~ ✅ (2026-05-13)
@@ -92,11 +94,18 @@
 - [x] `public/whistle.svg`, `public/wh2.svg` — добавлены SVG-ассеты
 - [x] `pnpm check` + `pnpm typecheck` + `pnpm build` — зелёные
 
+### ~~feat/light-theme — Theme switching~~ ✅ (2026-05-14)
+- [x] `globals.css` — светлые токены в `:root`, тёмные токены в `.dark`
+- [x] `shared/ui/theme-provider.tsx` — обёртка над `next-themes` ThemeProvider
+- [x] `shared/ui/theme-toggle.tsx` — кнопка Sun/Moon с `useTheme` (client component)
+- [x] `layout.tsx` — ThemeProvider с `defaultTheme="dark"`, `suppressHydrationWarning` на `<html>`
+- [x] `site-header` — добавлен ThemeToggle справа от навигации
+
 ### Phase 6 — Launch
 - [ ] Подключение домена i-trener.ru на Vercel
 - [ ] Настройка env vars на Vercel
 - [ ] Pagespeed 90+ по всем метрикам
-- [ ] Финальная проверка всех страниц1
+- [ ] Финальная проверка всех страниц
 
 ---
 

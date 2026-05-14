@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@shared/ui/theme-provider"
 import { SiteFooter } from "@widgets/site-footer"
 import { SiteHeader } from "@widgets/site-header"
 import type { Metadata } from "next"
@@ -56,11 +57,14 @@ export default function RootLayout({
         geistHeading.variable,
       )}
       lang="ru"
+      suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col bg-base text-primary">
-        <SiteHeader />
-        <div className="flex flex-1 flex-col">{children}</div>
-        <SiteFooter />
+        <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
+          <SiteHeader />
+          <div className="flex flex-1 flex-col">{children}</div>
+          <SiteFooter />
+        </ThemeProvider>
       </body>
     </html>
   )
