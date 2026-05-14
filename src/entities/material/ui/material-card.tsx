@@ -15,7 +15,7 @@ export function MaterialCard({ material, className }: MaterialCardProps) {
 
   const formattedDate = new Date(fm.date).toLocaleDateString("ru-RU", {
     day: "numeric",
-    month: "short",
+    month: "numeric",
     year: "numeric",
   })
 
@@ -60,9 +60,7 @@ export function MaterialCard({ material, className }: MaterialCardProps) {
           <span className="shrink-0 rounded-full bg-accent-dim px-2 py-0.5 font-medium text-accent text-xs">
             {CATEGORY_LABELS[fm.category]}
           </span>
-          <time className="truncate font-mono text-faint text-xs" dateTime={fm.date}>
-            {formattedDate}
-          </time>
+          <p className="truncate font-mono text-faint text-xs">{formattedDate}</p>
         </div>
 
         <h3 className="line-clamp-2 font-extrabold text-lg text-primary leading-snug transition-colors group-hover:text-accent">
