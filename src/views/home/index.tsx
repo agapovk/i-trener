@@ -41,7 +41,7 @@ export function HomeView() {
           </span>
           {CATEGORIES.map((cat) => (
             <Link
-              className="whitespace-nowrap rounded-lg bg-elevated px-4 py-2 font-medium text-muted text-sm transition-opacity hover:opacity-90"
+              className="whitespace-nowrap rounded-lg border border-border bg-subtle px-4 py-2 font-medium text-secondary text-sm transition-colors hover:border-accent hover:text-accent"
               href={`/categories/${cat}`}
               key={cat}
             >

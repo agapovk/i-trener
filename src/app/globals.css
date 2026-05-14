@@ -4,24 +4,25 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ─── Design tokens — VS Code Dark+ ─────────────────────────────────────── */
+/* ─── Design tokens — Light theme (default) ─────────────────────────────── */
 :root {
-  /* Project tokens */
-  --bg-base: #1e1e1e;
-  --bg-surface: #252526;
-  --bg-elevated: #2d2d2d;
-  --bg-subtle: #37373d;
-  --border-default: #454545;
-  --border-subtle: #333333;
-  --text-primary: #d4d4d4;
-  --text-secondary: #cccccc;
-  --text-muted: #858585;
-  --text-faint: #4d4d4d;
-  --accent-primary: #3794ff;
-  --accent-primary-dim: rgba(55, 148, 255, 0.12);
+  /* Project tokens — Light */
+  --bg-base: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-elevated: #f1f5f9;
+  --bg-subtle: #e2e8f0;
+  --border-default: #cbd5e1;
+  --border-subtle: #e2e8f0;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --text-faint: #94a3b8;
+  --accent-primary: #0284c7;
+  --accent-primary-dim: rgba(2, 132, 199, 0.12);
   --state-error: #f44747;
   --state-success: #4ec9b0;
   --state-warning: #ce9178;
+  --vignette-color: rgba(2, 132, 199, 0.18);
 
   /* shadcn/ui semantic vars — mapped to our dark theme (dark is default) */
   --card: oklch(1 0 0);
@@ -151,6 +152,21 @@
 }
 
 .dark {
+  /* Project tokens — Dark (VS Code Dark+) */
+  --bg-base: #1e1e1e;
+  --bg-surface: #252526;
+  --bg-elevated: #2d2d2d;
+  --bg-subtle: #37373d;
+  --border-default: #454545;
+  --border-subtle: #333333;
+  --text-primary: #d4d4d4;
+  --text-secondary: #cccccc;
+  --text-muted: #858585;
+  --text-faint: #4d4d4d;
+  --accent-primary: #3794ff;
+  --accent-primary-dim: rgba(55, 148, 255, 0.12);
+  --vignette-color: rgba(0, 0, 0, 0.45);
+
   --background: oklch(0.148 0.004 228.8);
   --foreground: oklch(0.987 0.002 197.1);
   --card: oklch(0.218 0.008 223.9);
