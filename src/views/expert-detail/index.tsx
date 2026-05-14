@@ -1,6 +1,6 @@
 import { CATEGORY_LABELS } from "@shared/config"
 import { getExpertBySlug } from "@shared/lib/mdx"
-import { Prose } from "@shared/ui"
+import { mdxComponents, Prose } from "@shared/ui"
 import { ExternalLink, Send, User } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -95,7 +95,7 @@ export function ExpertDetailView({ slug }: ExpertDetailViewProps) {
 
         {content.trim() && (
           <Prose>
-            <MDXRemote source={content} />
+            <MDXRemote components={mdxComponents} source={content} />
           </Prose>
         )}
       </article>

@@ -1,5 +1,5 @@
 import { getInterviewBySlug } from "@shared/lib/mdx"
-import { Prose, VideoEmbed } from "@shared/ui"
+import { mdxComponents, Prose, VideoEmbed } from "@shared/ui"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { MDXRemote } from "next-mdx-remote/rsc"
@@ -44,7 +44,7 @@ export function InterviewDetailView({ slug }: InterviewDetailViewProps) {
 
         {content.trim() && (
           <Prose>
-            <MDXRemote source={content} />
+            <MDXRemote components={mdxComponents} source={content} />
           </Prose>
         )}
       </article>

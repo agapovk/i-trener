@@ -1,6 +1,6 @@
 import { CATEGORY_LABELS } from "@shared/config"
 import { getMaterialBySlug } from "@shared/lib/mdx"
-import { Prose, VideoEmbed } from "@shared/ui"
+import { mdxComponents, Prose, VideoEmbed } from "@shared/ui"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { MDXRemote } from "next-mdx-remote/rsc"
@@ -47,7 +47,7 @@ export function MaterialDetailView({ slug }: MaterialDetailViewProps) {
 
         {content.trim() && (
           <Prose>
-            <MDXRemote source={content} />
+            <MDXRemote components={mdxComponents} source={content} />
           </Prose>
         )}
       </article>
