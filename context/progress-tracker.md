@@ -76,7 +76,9 @@
 - [x] `SITE_URL` добавлен в `shared/config/index.ts`
 - [x] `scripts/csv-to-mdx.ts` — конвертер Webflow CSV → MDX, запуск: `npx tsx scripts/csv-to-mdx.ts --type <materials|interviews|experts> --input <file.csv>`
 - [x] 27 статических страниц + `/sitemap.xml` + `/robots.txt`, pnpm check + typecheck + build зелёные
-- [ ] Прогнать скрипт по реальным CSV-файлам из Webflow
+- [x] Прогнать скрипт по реальным CSV-файлам из Webflow (ветка feat/import-real-content, 2026-05-14)
+  - 42 материала, 9 интервью, 25 экспертов (5 archived/draft пропущено)
+  - Скрипт обновлён: новый CSV-парсер для Webflow (multiline + bare quotes в HTML), маппинги реальных колонок
 - [ ] Проверить все маршруты с реальным контентом
 
 ### ~~chore/fix-ui — UI overhaul~~ ✅ (2026-05-13)
