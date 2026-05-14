@@ -6,6 +6,7 @@ export {
   ScanLinesLayer,
 } from "./bg-layers"
 export { Button, buttonVariants } from "./button"
+export { mdxComponents } from "./mdx-components"
 export {
   CloudLayer,
   CoarseNoiseLayer,
