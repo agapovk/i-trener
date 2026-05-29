@@ -16,43 +16,43 @@ export function HomeView() {
       {/* Hero */}
       <section className="relative border-border-subtle border-b">
         <NoiseLayer />
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-16 md:py-24">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-10 md:gap-6 md:py-16 lg:py-24">
           <div className="h-1 w-16 rounded-full bg-accent" />
-          <h1 className="max-w-3xl font-extrabold text-5xl text-primary leading-none tracking-tight md:text-7xl">
+          <h1 className="max-w-3xl font-extrabold text-4xl text-primary leading-none tracking-tight md:text-5xl lg:text-7xl">
             База знаний для
             <br />
             <span className="text-accent"> футбольных тренеров</span>
           </h1>
-          <p className="max-w-xl text-muted text-xl leading-relaxed">
+          <p className="max-w-xl text-muted leading-relaxed md:text-xl">
             Статьи, интервью и профили экспертов на русском языке.
           </p>
         </div>
       </section>
 
       {/* Categories */}
-      <section
-        className="relative"
-        style={{ borderBottom: "1px solid var(--border-subtle)", padding: "12px 0" }}
-      >
+      <section className="relative border-border-subtle border-b">
         <NoiseLayer />
-        <div className="scroll-x no-scrollbar mx-auto flex max-w-7xl items-center gap-4 overflow-auto px-4">
-          <span className="whitespace-nowrap font-mono text-accent text-xs uppercase">
-            Категории:
-          </span>
-          {CATEGORIES.map((cat) => (
-            <Link
-              className="whitespace-nowrap rounded-lg border border-border bg-subtle px-4 py-2 font-medium text-secondary text-sm transition-colors hover:border-accent hover:text-accent"
-              href={`/categories/${cat}`}
-              key={cat}
-            >
-              {CATEGORY_LABELS[cat]}
-            </Link>
-          ))}
+        <div className="relative">
+          <div className="no-scrollbar mx-auto flex max-w-7xl items-center gap-2 overflow-x-auto px-4 py-3 md:gap-4 md:py-3">
+            <span className="whitespace-nowrap font-mono text-accent text-xs uppercase">
+              Категории:
+            </span>
+            {CATEGORIES.map((cat) => (
+              <Link
+                className="whitespace-nowrap rounded-lg border border-border bg-subtle px-3 py-1.5 font-medium text-secondary text-xs transition-colors hover:border-accent hover:text-accent md:px-4 md:py-2 md:text-sm"
+                href={`/categories/${cat}`}
+                key={cat}
+              >
+                {CATEGORY_LABELS[cat]}
+              </Link>
+            ))}
+          </div>
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-linear-to-l from-base to-transparent md:hidden" />
         </div>
       </section>
 
       {/* Materials */}
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-16 px-4 py-16">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 py-10 md:gap-16 md:py-16">
         {materials.length > 0 && (
           <section className="flex flex-col gap-6">
             <div className="flex items-baseline justify-between">

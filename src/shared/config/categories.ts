@@ -1,11 +1,11 @@
 export type VideoPlatform = "vkvideo" | "dzen" | "youtube"
 
 export const CATEGORIES = [
-  "management",
   "professional-football",
-  "physical-preparation",
   "goalkeepers",
+  "physical-preparation",
   "analytics",
+  "management",
   "youth-football",
   "psychology",
 ] as const

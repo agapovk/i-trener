@@ -6,7 +6,7 @@
 
 ## Текущая фаза
 
-- **feat/light-theme** — завершена (2026-05-14)
+- **feat/mobile-ui** — в прогрессе
 - **Phase 6 — Launch** — не начата
 
 ---
@@ -37,7 +37,12 @@
 
 ## В прогрессе
 
-Ничего. feat/import-real-content завершена и смёржена (PR #6), Phase 6 (Launch) не начата.
+**feat/mobile-ui** — мобильная адаптация:
+- [x] Header: `MobileNav` burger-меню (client component), desktop nav скрыт на мобильном
+- [x] Footer: `grid-cols-2` на мобильном (Разделы + Категории рядом)
+- [x] Home hero: `text-4xl md:text-5xl lg:text-7xl`, отступы `py-10 md:py-16 lg:py-24`
+- [x] Категории на главной: меньший padding чипов на мобильном, fade-индикатор справа
+- [x] Секции на главной: `gap-10 md:gap-16 py-10 md:py-16`
 
 ---
 

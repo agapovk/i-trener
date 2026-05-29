@@ -6,7 +6,7 @@ export function SiteFooter() {
   return (
     <footer className="relative mt-auto overflow-hidden border-border-subtle border-t bg-surface">
       <VignetteLayer />
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 md:grid-cols-3 lg:grid-cols-5">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-10 px-8 py-8 md:grid-cols-3 md:gap-10 md:py-12 lg:grid-cols-5">
         <div className="flex flex-col gap-3 md:col-span-3 lg:col-span-2">
           <Link
             className="font-extrabold text-lg text-primary tracking-tight transition-colors hover:text-accent"
@@ -14,7 +14,7 @@ export function SiteFooter() {
           >
             Я:Тренер
           </Link>
-          <p className="text-muted text-sm leading-relaxed">
+          <p className="hidden text-muted text-sm leading-relaxed md:flex">
             Медиаплатформа и база знаний для тренеров по футболу.
           </p>
           <div className="flex flex-wrap items-center gap-4 pt-1">
@@ -45,7 +45,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col items-end gap-3 md:items-start">
           <span className="font-semibold text-faint text-xs uppercase tracking-widest">
             Разделы
           </span>
@@ -58,18 +58,6 @@ export function SiteFooter() {
               {label}
             </Link>
           ))}
-          <Link
-            className="text-muted text-sm transition-colors hover:text-primary"
-            href="/partners"
-          >
-            Партнёры
-          </Link>
-          <Link
-            className="text-muted text-sm transition-colors hover:text-primary"
-            href="/contacts"
-          >
-            Контакты
-          </Link>
         </div>
 
         <div className="flex flex-col gap-3">
@@ -87,7 +75,7 @@ export function SiteFooter() {
           ))}
         </div>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col items-end gap-3 self-end md:items-start md:self-auto">
           <span className="font-semibold text-faint text-xs uppercase tracking-widest">
             Партнёры
           </span>
@@ -101,7 +89,7 @@ export function SiteFooter() {
 
       <div className="border-border-subtle border-t">
         <div className="mx-auto max-w-7xl px-4 py-4">
-          <span className="text-faint text-xs">© {new Date().getFullYear()} Я:Тренер</span>
+          <span className="text-muted text-xs">© {new Date().getFullYear()} Я:Тренер</span>
         </div>
       </div>
     </footer>
