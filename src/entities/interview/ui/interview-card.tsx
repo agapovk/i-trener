@@ -14,7 +14,7 @@ export function InterviewCard({ interview, className }: InterviewCardProps) {
 
   const formattedDate = new Date(fm.date).toLocaleDateString("ru-RU", {
     day: "numeric",
-    month: "short",
+    month: "numeric",
     year: "numeric",
   })
 
@@ -58,16 +58,14 @@ export function InterviewCard({ interview, className }: InterviewCardProps) {
             <span className="truncate font-semibold text-primary text-sm">{fm.guest}</span>
             {fm.guestRole && <span className="truncate text-muted text-xs">{fm.guestRole}</span>}
           </div>
-          <time className="shrink-0 font-mono text-faint text-xs" dateTime={fm.date}>
-            {formattedDate}
-          </time>
+          <p className="truncate font-mono text-faint text-xs">{formattedDate}</p>
         </div>
 
-        <h3 className="line-clamp-2 font-extrabold text-lg text-primary leading-snug transition-colors group-hover:text-accent">
+        {/* <h3 className="line-clamp-2 font-extrabold text-lg text-primary leading-snug transition-colors group-hover:text-accent">
           {fm.title}
-        </h3>
+        </h3> */}
 
-        <p className="line-clamp-2 text-muted text-sm leading-relaxed">{fm.excerpt}</p>
+        {/* <p className="line-clamp-2 text-muted text-sm leading-relaxed">{fm.excerpt}</p> */}
       </div>
     </Link>
   )

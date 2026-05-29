@@ -67,7 +67,7 @@ export function MaterialCard({ material, className }: MaterialCardProps) {
           {fm.title}
         </h3>
 
-        <p className="line-clamp-2 text-muted text-sm leading-relaxed">{fm.excerpt}</p>
+        {/* <p className="line-clamp-2 text-muted text-sm leading-relaxed">{fm.excerpt}</p> */}
 
         <div className="mt-auto border-border-subtle border-t pt-2">
           <span className="text-faint text-xs">{fm.author}</span>

@@ -59,7 +59,7 @@ export function ContactsView() {
           </div>
         </section>
 
-        <section className="flex flex-col gap-4">
+        {/* <section className="flex flex-col gap-4">
           <h2 className="font-extrabold text-2xl text-primary">Сотрудничество</h2>
           <div className="flex flex-col gap-4 rounded-xl border border-border bg-surface p-6">
             <p className="text-muted leading-relaxed">
@@ -75,7 +75,7 @@ export function ContactsView() {
               Написать в Telegram
             </a>
           </div>
-        </section>
+        </section> */}
       </div>
     </main>
   )
