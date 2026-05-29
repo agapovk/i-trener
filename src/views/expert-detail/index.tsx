@@ -40,16 +40,7 @@ export function ExpertDetailView({ slug }: ExpertDetailViewProps) {
           <div className="flex flex-col gap-2">
             <h1 className="font-extrabold text-4xl text-primary leading-tight">{fm.name}</h1>
             <p className="text-muted">{fm.role}</p>
-            <div className="flex flex-wrap gap-1.5">
-              {fm.specializations.map((spec) => (
-                <span
-                  className="rounded-full bg-accent-dim px-2.5 py-0.5 text-accent text-xs"
-                  key={spec}
-                >
-                  {CATEGORY_LABELS[spec]}
-                </span>
-              ))}
-            </div>
+            <div className="flex flex-wrap gap-1.5">{CATEGORY_LABELS[fm.specialization]}</div>
           </div>
         </header>
 

@@ -39,21 +39,7 @@ export function ExpertCard({ expert, className }: ExpertCardProps) {
           </h3>
           <p className="truncate text-muted text-xs">{fm.role}</p>
         </div>
-        <div className="flex flex-wrap gap-1">
-          {fm.specializations.slice(0, 2).map((spec) => (
-            <span
-              className="rounded-full bg-accent-dim px-1.5 py-0.5 text-accent text-xs"
-              key={spec}
-            >
-              {CATEGORY_LABELS[spec]}
-            </span>
-          ))}
-          {fm.specializations.length > 2 && (
-            <span className="rounded-full bg-subtle px-1.5 py-0.5 text-faint text-xs">
-              +{fm.specializations.length - 2}
-            </span>
-          )}
-        </div>
+        <div className="flex flex-wrap gap-1">{CATEGORY_LABELS[fm.specialization]}</div>
       </div>
 
       <span className="shrink-0 text-muted text-sm transition-colors group-hover:text-accent">

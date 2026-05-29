@@ -12,7 +12,7 @@ export interface ExpertFrontmatter {
     vk?: string
     linkedin?: string
   }
-  specializations: Category[]
+  specialization: Category
 }
 
 export interface Expert {

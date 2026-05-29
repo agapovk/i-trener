@@ -6,32 +6,21 @@
 
 ## Текущая фаза
 
-- **feat/mobile-ui** — в прогрессе
-- **Phase 6 — Launch** — не начата
+- **feat/fix-experts**
 
 ---
 
 ## Текущая цель
 
-Подключить домен i-trener.ru на Vercel, настроить env vars, проверить Pagespeed 90+.
+- улучшить ui отображения экспертов
+- реальные имена и ссылки на страницу эксперта в материалах
+- ? возможно отображение всех материалов автора на его странице
 
 ---
 
 ## Завершено
 
-- [x] Изучена структура текущего сайта i-trener.ru (Webflow)
-- [x] Созданы context-файлы: project-overview, architecture-context, ui-context, code-standards, ai-workflow-rules, progress-tracker
-- [x] **Phase 0 — Foundation** (2026-05-08)
-  - [x] Next.js 16.2.6 + TypeScript + Tailwind v4 + App Router + `src/`
-  - [x] Biome 2.4.14 (lint + format) — `pnpm check` / `pnpm fix`
-  - [x] Vitest 4.1.5 — `pnpm test` / `pnpm test:watch`
-  - [x] FSD-структура: `src/{views,widgets,features,entities,shared}`
-  - [x] `content/{materials,interviews,experts}/`
-  - [x] `src/shared/lib/mdx/` — функции getAllMaterials/Interviews/Experts + getBySlug
-  - [x] Tailwind v4 токены в `globals.css` (VS Code Dark+ тема по умолчанию)
-  - [x] Path aliases: `@shared/*`, `@entities/*`, `@features/*`, `@widgets/*`, `@views/*`
-  - [x] shadcn/ui инициализирован (style: base-nova), компоненты в `src/shared/ui/`
-  - [x] `pnpm check` + `pnpm typecheck` + `pnpm build` — всё зелёное
+- **feat/mobile-ui** 
 
 ---
 
@@ -105,6 +94,11 @@
 - [x] `shared/ui/theme-toggle.tsx` — кнопка Sun/Moon с `useTheme` (client component)
 - [x] `layout.tsx` — ThemeProvider с `defaultTheme="dark"`, `suppressHydrationWarning` на `<html>`
 - [x] `site-header` — добавлен ThemeToggle справа от навигации
+
+### ~~feat/mobile-ui
+- [x] добавил мобильное меню
+- [x] сделал улучшеия по ui
+- [x] добавил пункты меню в категории
 
 ### Phase 6 — Launch
 - [ ] Подключение домена i-trener.ru на Vercel

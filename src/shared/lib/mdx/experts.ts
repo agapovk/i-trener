@@ -2,7 +2,8 @@ import fs from "node:fs"
 import path from "node:path"
 import type { Expert, ExpertFrontmatter } from "@entities/expert"
 import matter from "gray-matter"
-import { optionalString, requireString, validateCategories } from "./validate"
+import type { Category } from "@/shared/config"
+import { optionalString, requireString } from "./validate"
 
 const CONTENT_DIR = path.join(process.cwd(), "content/experts")
 
@@ -13,7 +14,7 @@ function parseFrontmatter(raw: unknown, filename: string): ExpertFrontmatter {
     name: requireString(data, "name", ctx),
     slug: requireString(data, "slug", ctx),
     role: requireString(data, "role", ctx),
-    specializations: validateCategories(data, "specializations", ctx),
+    specialization: requireString(data, "specialization", ctx) as Category,
     bio: requireString(data, "bio", ctx),
     image: optionalString(data, "image"),
     social: data.social == null ? undefined : (data.social as ExpertFrontmatter["social"]),
