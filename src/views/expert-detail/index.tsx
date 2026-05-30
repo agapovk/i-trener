@@ -6,6 +6,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { MDXRemote } from "next-mdx-remote/rsc"
+import { MaterialCard } from "@/entities/material"
+import { getMaterialsByAuthor } from "@/shared/lib/mdx/materials"
 
 interface ExpertDetailViewProps {
   slug: string
@@ -18,6 +20,7 @@ export function ExpertDetailView({ slug }: ExpertDetailViewProps) {
   }
 
   const { frontmatter: fm, content } = expert
+  const materials = getMaterialsByAuthor(slug)
 
   return (
     <main className="mx-auto flex w-full max-w-3xl flex-col gap-10 px-4 py-10">
@@ -88,6 +91,14 @@ export function ExpertDetailView({ slug }: ExpertDetailViewProps) {
           <Prose>
             <MDXRemote components={mdxComponents} source={content} />
           </Prose>
+        )}
+
+        {materials.length !== 0 && (
+          <div className="grid grid-cols-1 gap-6 border-border-subtle border-t pt-8 md:grid-cols-2">
+            {materials.map((m) => (
+              <MaterialCard key={m.frontmatter.slug} material={m} />
+            ))}
+          </div>
         )}
       </article>
     </main>

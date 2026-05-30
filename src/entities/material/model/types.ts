@@ -1,5 +1,4 @@
 import type { Category, VideoPlatform } from "@shared/config"
-import type { Expert } from "@/entities/expert"
 
 export interface MaterialFrontmatter {
   author: string
@@ -16,6 +15,5 @@ export interface MaterialFrontmatter {
 
 export interface Material {
   content: string
-  expert: Expert | null
   frontmatter: MaterialFrontmatter
 }

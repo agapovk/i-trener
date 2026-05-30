@@ -30,17 +30,20 @@ export function getAllExperts(): Expert[] {
     .filter((f) => f.endsWith(".mdx"))
     .map((filename) => {
       const raw = fs.readFileSync(path.join(CONTENT_DIR, filename), "utf8")
-      const { data } = matter(raw)
-      return { frontmatter: parseFrontmatter(data, filename) }
+      const { data, content } = matter(raw)
+      return { frontmatter: parseFrontmatter(data, filename), content }
     })
 }
 
-export function getExpertBySlug(slug: string): (Expert & { content: string }) | null {
+export function getExpertBySlug(slug: string): Expert | null {
   const filepath = path.join(CONTENT_DIR, `${slug}.mdx`)
   if (!fs.existsSync(filepath)) {
     return null
   }
   const raw = fs.readFileSync(filepath, "utf8")
   const { data, content } = matter(raw)
-  return { frontmatter: parseFrontmatter(data, `${slug}.mdx`), content }
+  return {
+    frontmatter: parseFrontmatter(data, `${slug}.mdx`),
+    content,
+  }
 }

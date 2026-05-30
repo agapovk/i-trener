@@ -16,5 +16,6 @@ export interface ExpertFrontmatter {
 }
 
 export interface Expert {
+  content: string
   frontmatter: ExpertFrontmatter
 }
