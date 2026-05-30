@@ -15,7 +15,7 @@ export function MaterialDetailView({ slug }: MaterialDetailViewProps) {
     notFound()
   }
 
-  const { frontmatter: fm, content } = material
+  const { frontmatter: fm, content, expert } = material
 
   const formattedDate = new Date(fm.date).toLocaleDateString("ru-RU", {
     day: "numeric",
@@ -40,7 +40,9 @@ export function MaterialDetailView({ slug }: MaterialDetailViewProps) {
             </time>
           </div>
           <h1 className="font-extrabold text-4xl text-primary leading-tight">{fm.title}</h1>
-          <p className="text-muted text-sm">Автор: {fm.author}</p>
+          <Link className="text-muted text-sm hover:text-accent" href={`/experts/${fm.author}`}>
+            Автор: {expert?.frontmatter.name}
+          </Link>
         </header>
 
         {fm.videoUrl && <VideoEmbed title={fm.title} url={fm.videoUrl} />}

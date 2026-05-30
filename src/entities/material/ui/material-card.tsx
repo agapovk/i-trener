@@ -11,7 +11,7 @@ interface MaterialCardProps {
 }
 
 export function MaterialCard({ material, className }: MaterialCardProps) {
-  const { frontmatter: fm } = material
+  const { frontmatter: fm, expert } = material
 
   const formattedDate = new Date(fm.date).toLocaleDateString("ru-RU", {
     day: "numeric",
@@ -70,7 +70,7 @@ export function MaterialCard({ material, className }: MaterialCardProps) {
         {/* <p className="line-clamp-2 text-muted text-sm leading-relaxed">{fm.excerpt}</p> */}
 
         <div className="mt-auto border-border-subtle border-t pt-2">
-          <span className="text-faint text-xs">{fm.author}</span>
+          <span className="text-faint text-xs">{expert?.frontmatter.name ?? fm.author}</span>
         </div>
       </div>
     </Link>

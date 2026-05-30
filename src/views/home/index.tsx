@@ -9,7 +9,7 @@ import { NoiseLayer } from "@/shared/ui"
 export function HomeView() {
   const materials = getAllMaterials().slice(0, 6)
   const interviews = getAllInterviews().slice(0, 3)
-  const experts = getAllExperts().slice(0, 3)
+  const experts = getAllExperts().slice(0, 6)
 
   return (
     <main className="flex flex-col">
@@ -104,7 +104,7 @@ export function HomeView() {
                 Все →
               </Link>
             </div>
-            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
               {experts.map((e) => (
                 <ExpertCard expert={e} key={e.frontmatter.slug} />
               ))}

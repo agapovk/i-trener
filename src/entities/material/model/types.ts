@@ -14,5 +14,6 @@ export interface MaterialFrontmatter {
 }
 
 export interface Material {
+  content: string
   frontmatter: MaterialFrontmatter
 }

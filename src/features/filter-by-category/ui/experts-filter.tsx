@@ -1,23 +1,22 @@
 "use client"
 
-import type { Material } from "@entities/material"
-import { MaterialCard } from "@entities/material"
-import { CATEGORIES, CATEGORY_LABELS } from "@shared/config"
+import { CATEGORIES, CATEGORY_LABELS, type Category } from "@shared/config"
 import { cn } from "@shared/lib"
 import { useState } from "react"
+import { type Expert, ExpertCard } from "@/entities/expert"
 
-interface CategoryFilterProps {
-  materials: Material[]
+interface ExpertFilterProps {
+  experts: Expert[]
 }
 
-export function CategoryFilter({ materials }: CategoryFilterProps) {
-  const [active, setActive] = useState<string | null>(null)
+export function ExpertFilter({ experts }: ExpertFilterProps) {
+  const [active, setActive] = useState<Category | null>(null)
 
   const usedCategories = CATEGORIES.filter((c) =>
-    materials.some((m) => m.frontmatter.category === c),
+    experts.some((e) => e.frontmatter.specialization === c),
   )
 
-  const filtered = active ? materials.filter((m) => m.frontmatter.category === active) : materials
+  const filtered = active ? experts.filter((e) => e.frontmatter.specialization === active) : experts
 
   return (
     <div className="flex flex-col gap-8">
@@ -48,11 +47,11 @@ export function CategoryFilter({ materials }: CategoryFilterProps) {
       </div>
 
       {filtered.length === 0 ? (
-        <p className="text-muted text-sm">Материалов не найдено.</p>
+        <p className="text-muted">Эксперты пока не добавлены.</p>
       ) : (
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((m) => (
-            <MaterialCard key={m.frontmatter.slug} material={m} />
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+          {filtered.map((e) => (
+            <ExpertCard expert={e} key={e.frontmatter.slug} />
           ))}
         </div>
       )}
