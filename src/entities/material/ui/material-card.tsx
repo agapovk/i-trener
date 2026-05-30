@@ -4,10 +4,11 @@ import { cn } from "@shared/lib"
 import { PlayCircle } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import type { Expert } from "@/entities/expert"
 
 interface MaterialCardProps {
   className?: string
-  material: Material
+  material: Material & { expert: Expert | null }
 }
 
 export function MaterialCard({ material, className }: MaterialCardProps) {

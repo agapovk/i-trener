@@ -2,6 +2,3 @@ pnpm check
 pnpm typecheck
 pnpm test
 pnpm build
-
-
-exit 1
