@@ -5,9 +5,10 @@ import { MaterialCard } from "@entities/material"
 import { CATEGORIES, CATEGORY_LABELS } from "@shared/config"
 import { cn } from "@shared/lib"
 import { useState } from "react"
+import type { Expert } from "@/entities/expert"
 
 interface MaterialFilterProps {
-  materials: Material[]
+  materials: (Material & { expert: Expert | null })[]
 }
 
 export function MaterialFilter({ materials }: MaterialFilterProps) {
