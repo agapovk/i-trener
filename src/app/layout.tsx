@@ -4,6 +4,7 @@ import { SiteHeader } from "@widgets/site-header"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono, IBM_Plex_Sans } from "next/font/google"
 import "./globals.css"
+import { Analytics } from "@vercel/analytics/next"
 import { cn } from "@/shared/lib/utils"
 
 const geistHeading = Geist({ subsets: ["latin"], variable: "--font-heading" })
@@ -65,6 +66,7 @@ export default function RootLayout({
           <div className="flex flex-1 flex-col">{children}</div>
           <SiteFooter />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
