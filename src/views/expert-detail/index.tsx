@@ -7,7 +7,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import { MaterialCard } from "@/entities/material"
-import { getMaterialsByAuthor } from "@/shared/lib/mdx/materials"
+import { getMaterialsByAuthor } from "@/shared/lib/mdx"
 
 interface ExpertDetailViewProps {
   slug: string
