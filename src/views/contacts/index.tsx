@@ -1,26 +1,5 @@
-import { SOCIAL_LINKS } from "@shared/config"
-import { ExternalLink, MessageCircle, Send, Users } from "lucide-react"
-
-const socialChannels = [
-  {
-    label: "Telegram",
-    href: SOCIAL_LINKS.telegram,
-    icon: Send,
-    description: "Новости и анонсы материалов",
-  },
-  {
-    label: "ВКонтакте",
-    href: SOCIAL_LINKS.vk,
-    icon: Users,
-    description: "Сообщество тренеров",
-  },
-  {
-    label: "Instagram",
-    href: SOCIAL_LINKS.instagram,
-    icon: MessageCircle,
-    description: "Фото и короткие материалы",
-  },
-] as const
+import { ExternalLink } from "lucide-react"
+import { SOCIAL_LINKS } from "@/shared/config"
 
 export function ContactsView() {
   return (
@@ -36,7 +15,7 @@ export function ContactsView() {
         <section className="flex flex-col gap-4">
           <h2 className="font-extrabold text-2xl text-primary">Социальные сети</h2>
           <div className="flex flex-col gap-3">
-            {socialChannels.map(({ label, href, icon: Icon, description }) => (
+            {SOCIAL_LINKS.map(({ label, href, icon: Icon, description }) => (
               <a
                 className="group flex items-center gap-4 rounded-xl border border-border bg-surface p-4 transition-colors hover:border-accent"
                 href={href}
