@@ -42,3 +42,12 @@ export const PARTNERS = [
   { name: "Authentic.Football", description: "Организация мероприятий" },
   { name: "Championat.Shop", description: "Мерч и настольные игры" },
 ] as const
+
+export const HOMEPAGE_EXPERTS = [
+  "averyanov-evgeniy",
+  "shpilev-andrey",
+  "galaktionov-mihail",
+  "kafanov-vitaliy",
+  "bulatov-sergey",
+  "iskakov-murat",
+]

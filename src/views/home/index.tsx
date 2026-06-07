@@ -1,7 +1,7 @@
 import { ExpertCard } from "@entities/expert"
 import { InterviewCard } from "@entities/interview"
 import { MaterialCard } from "@entities/material"
-import { getAllExperts, getAllInterviews, getAllMaterials } from "@shared/lib/mdx"
+import { getAllInterviews, getAllMaterials, getHomePageExperts } from "@shared/lib/mdx"
 import Link from "next/link"
 import { CATEGORIES, CATEGORY_LABELS } from "@/shared/config"
 import { NoiseLayer } from "@/shared/ui"
@@ -9,8 +9,7 @@ import { NoiseLayer } from "@/shared/ui"
 export function HomeView() {
   const materials = getAllMaterials().slice(0, 6)
   const interviews = getAllInterviews().slice(0, 3)
-  const experts = getAllExperts().slice(0, 6)
-
+  const experts = getHomePageExperts()
   return (
     <main className="flex flex-col">
       {/* Hero */}

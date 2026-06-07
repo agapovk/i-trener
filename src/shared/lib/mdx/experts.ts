@@ -2,7 +2,7 @@ import fs from "node:fs"
 import path from "node:path"
 import type { Expert, ExpertFrontmatter } from "@entities/expert"
 import matter from "gray-matter"
-import type { Category } from "@/shared/config"
+import { type Category, HOMEPAGE_EXPERTS } from "@/shared/config"
 import { optionalString, requireString } from "./validate"
 
 const CONTENT_DIR = path.join(process.cwd(), "content/experts")
@@ -33,6 +33,21 @@ export function getAllExperts(): Expert[] {
       const { data, content } = matter(raw)
       return { frontmatter: parseFrontmatter(data, filename), content }
     })
+}
+
+export function getHomePageExperts(): Expert[] {
+  if (!fs.existsSync(CONTENT_DIR)) {
+    return []
+  }
+  return fs
+    .readdirSync(CONTENT_DIR)
+    .filter((f) => f.endsWith(".mdx"))
+    .map((filename) => {
+      const raw = fs.readFileSync(path.join(CONTENT_DIR, filename), "utf8")
+      const { data, content } = matter(raw)
+      return { frontmatter: parseFrontmatter(data, filename), content }
+    })
+    .filter((e) => HOMEPAGE_EXPERTS.includes(e.frontmatter.slug))
 }
 
 export function getExpertBySlug(slug: string): Expert | null {
