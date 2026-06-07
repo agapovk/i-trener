@@ -24,7 +24,7 @@ export function HomeView() {
             <span className="text-accent"> футбольных тренеров</span>
           </h1>
           <p className="max-w-xl text-muted leading-relaxed md:text-xl">
-            Статьи, интервью и профили экспертов на русском языке.
+            Материалы, интервью и наши эксперты для вас.
           </p>
         </div>
       </section>
@@ -104,7 +104,7 @@ export function HomeView() {
                 Все →
               </Link>
             </div>
-            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
               {experts.map((e) => (
                 <ExpertCard expert={e} key={e.frontmatter.slug} />
               ))}

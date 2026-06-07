@@ -23,25 +23,25 @@ export function ExpertFilter({ experts }: ExpertFilterProps) {
       <div className="flex flex-wrap gap-2">
         <button
           className={cn(
-            "rounded-full px-4 py-1.5 font-medium text-sm transition-colors",
+            "rounded-full px-2 py-1.5 font-medium text-xs transition-colors md:px-4 md:text-sm",
             active === null ? "bg-accent text-white" : "bg-subtle text-muted hover:text-primary",
           )}
           onClick={() => setActive(null)}
           type="button"
         >
-          Все
+          Все {!active && filtered.length}
         </button>
         {usedCategories.map((cat) => (
           <button
             className={cn(
-              "rounded-full px-4 py-1.5 font-medium text-sm transition-colors",
+              "rounded-full px-2 py-1.5 font-medium text-xs transition-colors md:px-4 md:text-sm",
               active === cat ? "bg-accent text-white" : "bg-subtle text-muted hover:text-primary",
             )}
             key={cat}
             onClick={() => setActive(active === cat ? null : cat)}
             type="button"
           >
-            {CATEGORY_LABELS[cat]}
+            {CATEGORY_LABELS[cat]} {active === cat && filtered.length}
           </button>
         ))}
       </div>
@@ -49,7 +49,7 @@ export function ExpertFilter({ experts }: ExpertFilterProps) {
       {filtered.length === 0 ? (
         <p className="text-muted">Эксперты пока не добавлены.</p>
       ) : (
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {filtered.map((e) => (
             <ExpertCard expert={e} key={e.frontmatter.slug} />
           ))}

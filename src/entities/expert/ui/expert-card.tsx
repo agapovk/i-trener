@@ -1,7 +1,7 @@
 import type { Expert } from "@entities/expert"
 import { CATEGORY_LABELS } from "@shared/config"
 import { cn } from "@shared/lib"
-import { User } from "lucide-react"
+import { ChevronRight, User } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -22,9 +22,15 @@ export function ExpertCard({ expert, className }: ExpertCardProps) {
       )}
       href={`/experts/${fm.slug}`}
     >
-      <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border border-border bg-elevated">
+      <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full border border-border bg-elevated">
         {fm.image ? (
-          <Image alt={fm.name} className="object-cover" fill sizes="56px" src={fm.image} />
+          <Image
+            alt={fm.name}
+            className="object-cover object-top"
+            fill
+            sizes="80px"
+            src={fm.image}
+          />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
             <User className="h-5 w-5 text-muted" />
@@ -32,13 +38,11 @@ export function ExpertCard({ expert, className }: ExpertCardProps) {
         )}
       </div>
 
-      <div className="flex min-w-0 flex-1 flex-col gap-1.5">
-        <div>
-          <h3 className="truncate font-extrabold text-primary text-sm leading-tight transition-colors group-hover:text-accent">
-            {fm.name}
-          </h3>
-          <p className="truncate text-muted text-xs">{fm.role}</p>
-        </div>
+      <div className="flex min-w-0 flex-1 flex-col gap-2">
+        <h3 className="truncate font-extrabold text-primary leading-tight transition-colors group-hover:text-accent">
+          {fm.name}
+        </h3>
+        <p className="truncate text-muted text-xs">{fm.role}</p>
         <div className="flex flex-wrap gap-1">
           <span className="rounded-full bg-accent-dim px-1.5 py-0.5 text-accent text-xs">
             {CATEGORY_LABELS[fm.specialization]}
@@ -47,7 +51,7 @@ export function ExpertCard({ expert, className }: ExpertCardProps) {
       </div>
 
       <span className="shrink-0 text-muted text-sm transition-colors group-hover:text-accent">
-        →
+        <ChevronRight className="h-4 w-4" />
       </span>
     </Link>
   )
