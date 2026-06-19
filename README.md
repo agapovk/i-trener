@@ -3,6 +3,7 @@
 A modern content platform aggregating professional materials, interviews, and expert profiles for football coaches. Built with Next.js, TypeScript, and MDX for scalable, performant content delivery.
 
 **Live:** [i-trener.ru](https://i-trener.ru)
+
 ![Screenshots](public/screenshot.jpeg)
 
 ---
