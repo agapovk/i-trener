@@ -1,6 +1,6 @@
 import { CATEGORY_LABELS } from "@shared/config"
 import { getExpertBySlug } from "@shared/lib/mdx"
-import { mdxComponents, Prose } from "@shared/ui"
+import { mdxComponents, NoiseLayer, Prose } from "@shared/ui"
 import { ExternalLink, Send, User } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -23,30 +23,43 @@ export function ExpertDetailView({ slug }: ExpertDetailViewProps) {
   const materials = getMaterialsByAuthor(slug)
 
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-col gap-10 px-4 py-10">
-      <Link className="text-muted text-sm transition-colors hover:text-accent" href="/experts">
-        ← Эксперты
-      </Link>
+    <main className="flex flex-col gap-8">
+      <div className="relative overflow-hidden border-border-subtle border-b md:pb-8">
+        <NoiseLayer />
+        <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8">
+          <Link className="text-muted text-sm transition-colors hover:text-accent" href="/experts">
+            ← Эксперты
+          </Link>
+          <div className="flex flex-col items-center gap-6 md:flex-row md:gap-8">
+            <div className="relative h-64 w-64 shrink-0 overflow-hidden rounded-full border border-border bg-elevated">
+              {fm.image ? (
+                <Image
+                  alt={fm.name}
+                  className="objject-top object-cover"
+                  fill
+                  loading="eager"
+                  sizes="256px"
+                  src={fm.image}
+                />
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <User className="h-8 w-8 text-muted" />
+                </div>
+              )}
+            </div>
 
-      <article className="flex flex-col gap-8">
-        <header className="flex items-start gap-6 border-border-subtle border-b pb-8">
-          <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full border border-border bg-elevated">
-            {fm.image ? (
-              <Image alt={fm.name} className="object-cover" fill sizes="96px" src={fm.image} />
-            ) : (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <User className="h-8 w-8 text-muted" />
-              </div>
-            )}
+            <div className="flex flex-col gap-2 text-center md:text-start">
+              <h1 className="font-extrabold text-2xl text-primary leading-tight md:text-4xl">
+                {fm.name}
+              </h1>
+              <p className="text-muted">{fm.role}</p>
+              <p>{CATEGORY_LABELS[fm.specialization]}</p>
+            </div>
           </div>
+        </div>
+      </div>
 
-          <div className="flex flex-col gap-2">
-            <h1 className="font-extrabold text-4xl text-primary leading-tight">{fm.name}</h1>
-            <p className="text-muted">{fm.role}</p>
-            <div className="flex flex-wrap gap-1.5">{CATEGORY_LABELS[fm.specialization]}</div>
-          </div>
-        </header>
-
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 py-10">
         {fm.bio && <p className="text-secondary leading-relaxed">{fm.bio}</p>}
 
         {fm.social && (
@@ -94,13 +107,16 @@ export function ExpertDetailView({ slug }: ExpertDetailViewProps) {
         )}
 
         {materials.length !== 0 && (
-          <div className="grid grid-cols-1 gap-6 border-border-subtle border-t pt-8 md:grid-cols-2">
-            {materials.map((m) => (
-              <MaterialCard key={m.frontmatter.slug} material={m} />
-            ))}
+          <div className="grid gap-5 border-border-subtle border-t pt-8">
+            <h2 className="font-extrabold text-2xl text-primary">Материалы</h2>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              {materials.map((m) => (
+                <MaterialCard key={m.frontmatter.slug} material={m} />
+              ))}
+            </div>
           </div>
         )}
-      </article>
+      </div>
     </main>
   )
 }

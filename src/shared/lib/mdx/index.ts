@@ -1,4 +1,4 @@
-export { getAllExperts, getExpertBySlug } from "./experts"
+export { getAllExperts, getExpertBySlug, getHomePageExperts } from "./experts"
 export { getAllInterviews, getInterviewBySlug } from "./interviews"
 export { getAllMaterials, getMaterialBySlug, getMaterialsByAuthor } from "./materials"
 export {
