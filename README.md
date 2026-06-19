@@ -3,6 +3,7 @@
 A modern content platform aggregating professional materials, interviews, and expert profiles for football coaches. Built with Next.js, TypeScript, and MDX for scalable, performant content delivery.
 
 **Live:** [i-trener.ru](https://i-trener.ru)
+![Screenshots](public/screenshot.jpeg)
 
 ---
 
@@ -16,6 +17,15 @@ A modern content platform aggregating professional materials, interviews, and ex
 - **Full-text search & filtering** for content discovery
 
 Migrated from Webflow to a custom Next.js stack maintaining 100% content integrity and improving performance.
+
+---
+
+## Context
+
+Commercial project — designed, built, and maintained solo since 2022. 
+Included migrating a live site from Webflow to a custom Next.js stack 
+with zero content loss and preserved SEO. Currently serves real users 
+in the football coaching community.
 
 ---
 
